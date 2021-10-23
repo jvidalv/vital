@@ -1,0 +1,23 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "rules": {
+    "comma-dangle": "off",
+    "react/prop-types": "off",
+    "react/no-unescaped-entities": "off",
+    "react/display-name" : "off",
+    "multiline-ternary": "off",
+    "@typescript-eslint/ban-ts-comment" : "warn",
+    "no-use-before-define": "off",
+    "space-before-function-paren": "off"
+  }
+}

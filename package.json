@@ -1,0 +1,45 @@
+{
+  "name": "vite-react-typescript-tailwind-template",
+  "version": "1.0.0",
+  "description": "Starter template for React (TypeScript) bundled and served using Vite. Supports for Tailwind and CSS-Modules with Postcss. ",
+  "main": "index.js",
+  "scripts": {
+    "start": "vite",
+    "build" : "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jvidalv/vite-react-typescript-tailwind-template.git"
+  },
+  "author": "Josep Vidal <josepvidalvidal@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jvidalv/vite-react-typescript-tailwind-template/issues"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.4",
+    "@types/react": "^17.0.31",
+    "@types/react-dom": "^17.0.10",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
+    "vite" : "^2.6.10",
+    "vite-preset-react": "^2.0.0",
+    "typescript": "^4.4.4",
+    "postcss": "^8.3.11",
+    "prettier": "^2.4.1",
+    "lint-staged": "^11.2.3",
+    "husky": "^7.0.4",
+    "tailwindcss": "^2.2.17",
+    "@tailwindcss/forms": "^0.3.4",
+    "eslint": "^8.1.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "autoprefixer": "^10.3.7"
+  },
+  "homepage": "https://github.com/jvidalv/vite-react-typescript-tailwind-template#readme"
+}
