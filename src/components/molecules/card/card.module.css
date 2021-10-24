@@ -1,0 +1,19 @@
+.card {
+    @apply bg-gradient-to-b from-white to-gray-100 rounded-md shadow p-4 space-y-6
+}
+
+.title {
+    @apply text-2xl font-bold text-black text-gray-800
+}
+
+.description {
+    @apply mt-2 text-lg text-gray-700
+}
+
+.iconContainer {
+    @apply flex items-center justify-center h-12 w-12 rounded-md bg-purple-50
+}
+
+.icon {
+    @apply h-8 w-8 text-purple-600
+}

@@ -1,3 +1,38 @@
-.app {
-    @apply min-h-screen max-w-7xl mx-auto my-16 bg-red-500 rounded-md
+.main {
+    @apply space-y-16 bg-gradient-to-b from-white to-purple-500
+}
+
+.viteLogo {
+    @apply absolute top-6 left-6 opacity-25 w-56 h-56
+}
+
+.header {
+    @apply pt-16 text-center
+}
+
+.headerTitle {
+    @apply font-extrabold text-5xl text-transparent bg-clip-text bg-gradient-to-br from-blue-900 to-purple-600
+}
+
+.content {
+    @apply min-h-screen max-w-7xl mx-auto my-16 rounded-md
+}
+
+.features {
+    @apply grid grid-cols-10 gap-4
+}
+
+.cardWrapper {
+    @apply col-span-5 opacity-0;
+    animation: show .5s forwards;
+}
+
+.cta {
+    @apply text-black font-bold transition tracking-wide hover:text-purple-800
+}
+
+@keyframes show {
+    to {
+        @apply opacity-100
+    }
 }
