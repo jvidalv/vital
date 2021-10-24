@@ -1,7 +1,7 @@
 {
   "name": "vite-react-typescript-tailwind-template",
   "version": "1.0.0",
-  "description": "Starter template for React (TypeScript) bundled and served using Vite. Supports for Tailwind and CSS-Modules with Postcss. ",
+  "description": "Starter template for React (TypeScript) bundled and served using Vite. Supports for Tailwind and CSS-Modules with PostCSS.",
   "main": "index.js",
   "scripts": {
     "start": "vite",
@@ -39,7 +39,9 @@
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "autoprefixer": "^10.3.7"
+    "autoprefixer": "^10.3.7",
+    "@commitlint/cli": "^13.2.1",
+    "@commitlint/config-conventional": "^13.2.0"
   },
   "homepage": "https://github.com/jvidalv/vite-react-typescript-tailwind-template#readme"
 }
