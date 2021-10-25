@@ -24,6 +24,10 @@
     @apply text-2xl sm:text-4xl leading-none font-bold tracking-tight text-purple-400
 }
 
+.headerTopTitleVital {
+    @apply text-[gold] opacity-75
+}
+
 .headerTitle {
     @apply text-6xl lg:text-7xl leading-none font-extrabold tracking-tight  mb-8 sm:mb-10 text-transparent bg-clip-text bg-gradient-to-br from-purple-400 to-purple-800
 }
@@ -68,7 +72,7 @@
 }
 
 .viteLogoContainer {
-    @apply absolute top-12 right-12 opacity-10 lg:opacity-25;
+    @apply absolute top-12 right-12 opacity-10 lg:opacity-50;
 }
 
 .viteLogo {

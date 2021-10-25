@@ -104,7 +104,10 @@ const App = (): JSX.Element => {
   return (
     <main className={styles.main}>
       <header className={styles.header}>
-        <h3 className={styles.headerTopTitle}>Vite Template</h3>
+        <h3 className={styles.headerTopTitle}>
+          <span className={styles.headerTopTitleVital}>Vital</span> @ Vite
+          Template
+        </h3>
         <h1 className={styles.headerTitle}>React + TypeScript + Tailwind</h1>
         <p className={styles.headerDescription}>
           Bootstrap your web projects faster than ever. Comes with:{" "}
@@ -116,8 +119,8 @@ const App = (): JSX.Element => {
           <code className={styles.headerDescriptionCode}>Prettier</code> and{" "}
           <code className={styles.headerDescriptionCode}>
             Atomic organization for components
-          </code>{" "}
-          configured and ready to go.
+          </code>
+          . Configured and ready to go.
         </p>
         <div className={styles.viteLogoContainer}>
           <Logos.Vite className={styles.viteLogo} />
@@ -125,10 +128,10 @@ const App = (): JSX.Element => {
       </header>
       <section className={styles.copy}>
         <div className={styles.copyInner}>
-          <a href="https://github.com/jvidalv/vite-react-typescript-tailwind-template">
+          <a href="https://github.com/jvidalv/vital">
             <Button>Visit on Github</Button>
           </a>
-          <CopyButton text="npx degit jvidalv/vite-react-typescript-tailwind-template my-app" />
+          <CopyButton text="npx degit jvidalv/vital my-app" />
         </div>
       </section>
       <section className={styles.features}>
