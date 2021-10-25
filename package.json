@@ -14,7 +14,8 @@
   },
   "scripts": {
     "start": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -54,7 +55,10 @@
     "@commitlint/cli": "^13.2.1",
     "@commitlint/config-conventional": "^13.2.0",
     "ts-jest": "^27.0.7",
-    "jest": "^27.3.1"
+    "jest": "^27.3.1",
+    "@testing-library/react" : "^12.1.2",
+    "@testing-library/jest-dom": "^5.14.1",
+    "identity-obj-proxy" : "^3.0.0"
   },
   "homepage": "https://github.com/jvidalv/vite-react-typescript-tailwind-template#readme"
 }
