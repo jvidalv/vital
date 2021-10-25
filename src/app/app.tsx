@@ -156,6 +156,11 @@ const App = (): JSX.Element => {
           </div>
         ))}
       </section>
+      <footer className={styles.footer}>
+        <a href="https://github.com/jvidalv">
+          Josep Vidal @ {new Date().getFullYear()}
+        </a>
+      </footer>
     </main>
   );
 };

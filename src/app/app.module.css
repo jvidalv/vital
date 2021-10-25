@@ -49,7 +49,7 @@
 }
 
 .features {
-    @apply pb-16 max-w-screen-lg xl:max-w-screen-xl mx-auto grid grid-cols-10 gap-4
+    @apply max-w-screen-lg xl:max-w-screen-xl mx-auto grid grid-cols-10 gap-4
 }
 
 .cardWrapper {
@@ -89,4 +89,8 @@
         transform: translateY(40px) rotate(
                 -1deg);
     }
+}
+
+.footer {
+    @apply pb-16 max-w-screen-lg xl:max-w-screen-xl mx-auto text-right text-gray-400 font-bold
 }
