@@ -3,9 +3,18 @@
   "version": "1.0.0",
   "description": "Starter template for React (TypeScript) bundled and served using Vite. Supports for Tailwind and CSS-Modules with PostCSS.",
   "main": "index.js",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not IE 11"
+  ],
+  "engines": {
+    "node": ">=16",
+    "yarn": ">=1.22.5"
+  },
   "scripts": {
     "start": "vite",
-    "build" : "vite build"
+    "build": "vite build"
   },
   "repository": {
     "type": "git",
