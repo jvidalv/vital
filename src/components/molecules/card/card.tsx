@@ -19,11 +19,11 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
             <Icon className={styles.icon} aria-hidden="true" />
           </span>
         </div>
-        <div>
+        <div className={styles.content}>
           <h3 className={styles.title}>{title}</h3>
           <p className={styles.description}>{description}</p>
+          {cta}
         </div>
-        {cta}
       </div>
     );
   }

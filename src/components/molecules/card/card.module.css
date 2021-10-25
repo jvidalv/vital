@@ -1,19 +1,23 @@
 .card {
-    @apply bg-gradient-to-b from-white to-gray-100 rounded-md shadow p-4 space-y-6
+    @apply bg-white bg-opacity-5 rounded-md shadow p-4 relative overflow-hidden h-full
+}
+
+.content {
+    @apply flex flex-col h-full
 }
 
 .title {
-    @apply text-2xl font-bold text-black text-gray-800
+    @apply text-2xl font-bold text-black text-blue-500
 }
 
 .description {
-    @apply mt-2 text-lg text-gray-700
+    @apply mt-2 text-base text-gray-300 flex-1
 }
 
 .iconContainer {
-    @apply flex items-center justify-center h-12 w-12 rounded-md bg-purple-50
+    @apply absolute right-3 bottom-3 flex items-center justify-center rounded-md opacity-10
 }
 
 .icon {
-    @apply h-8 w-8 text-purple-600
+    @apply h-12 w-12 text-white
 }
