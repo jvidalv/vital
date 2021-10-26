@@ -1,7 +1,10 @@
 {
   "name": "vital",
   "version": "1.0.0",
-  "description": "Starter template for Vite with React (TypeScript). Supports for Tailwind with CSS-Modules with PostCSS. Jest configured and ready to go",
+  "description": "Starter template for Vite with React (TypeScript). Supports Tailwind with CSS-Modules. Jest and @react/testing-library configured and ready to go. Also ESLint, Prettier, Husky, Commit-lint and Atomic Design for components.",
+  "keywords": [
+    "react", "vite", "typescript", "jest", "tailwind", "template", "starter", "css-modules", "eslint", "prettier", "husky", "commit-lint"
+  ],
   "browserslist": [
     ">0.2%",
     "not dead",
