@@ -69,34 +69,34 @@ const features = [
     name: "Prettier",
     description: "An opinionated code formatter.",
     logo: MenuIcon,
-    docs: "https://jestjs.io/#",
+    docs: "https://prettier.io/",
   },
   {
     name: "Husky",
     description:
       "Lint your commit messages, run tests, lint code, etc... when you commit or push.",
     logo: CakeIcon,
-    docs: "https://jestjs.io/#",
+    docs: "https://github.com/typicode/husky",
   },
   {
     name: "Commit-lint",
     description: "Helps your team adhering to a commit convention.",
     logo: FilmIcon,
-    docs: "https://jestjs.io/#",
+    docs: "https://github.com/conventional-changelog/commitlint",
   },
   {
     name: "Atomic design",
     description:
       "We’re not designing pages, we’re designing systems of components.",
     logo: LocationMarkerIcon,
-    docs: "https://jestjs.io/#",
+    docs: "https://bradfrost.com/blog/post/atomic-web-design/",
   },
   {
     name: "Absolute imports",
     description:
-      "Import resource using its full path from the project’s src folder",
+      "Import resource using its full path from the project’s src folder.",
     logo: ChevronDownIcon,
-    docs: "https://jestjs.io/#",
+    docs: "https://github.com/vitejs/vite/issues/88#issuecomment-762415200",
   },
 ];
 
