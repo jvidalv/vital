@@ -62,6 +62,7 @@ When you use this template, try follow the checklist to update your info properl
 - [ ] Change the author name in `LICENSE`
 - [ ] Change the title in `index.html`
 - [ ] Change the favicon in `public`
+- [ ] Modify the manifest in `public`
 - [ ] Clean up the README's 
 
 And, enjoy :)
