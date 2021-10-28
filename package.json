@@ -2,6 +2,16 @@
   "name": "vital",
   "version": "1.0.0",
   "description": "Starter template for Vite with React (TypeScript). Supports Tailwind with CSS-Modules. Jest and @react/testing-library configured and ready to go. Also ESLint, Prettier, Husky, Commit-lint and Atomic Design for components.",
+  "homepage": "https://github.com/jvidalv/vital#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jvidalv/vital.git"
+  },
+  "author": "Josep Vidal <josepvidalvidal@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jvidalv/vital/issues"
+  },
   "keywords": [
     "react", "vite", "typescript", "jest", "tailwind", "template", "starter", "css-modules", "eslint", "prettier", "husky", "commit-lint"
   ],
@@ -18,15 +28,6 @@
     "start": "vite",
     "build": "vite build",
     "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jvidalv/vital.git"
-  },
-  "author": "Josep Vidal <josepvidalvidal@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jvidalv/vital/issues"
   },
   "dependencies": {
     "react": "^17.0.2",
@@ -61,6 +62,5 @@
     "@testing-library/react" : "^12.1.2",
     "@testing-library/jest-dom": "^5.14.1",
     "identity-obj-proxy" : "^3.0.0"
-  },
-  "homepage": "https://github.com/jvidalv/vital#readme"
+  }
 }
