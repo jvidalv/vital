@@ -27,7 +27,8 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "husky install"
   },
   "dependencies": {
     "react": "^17.0.2",
