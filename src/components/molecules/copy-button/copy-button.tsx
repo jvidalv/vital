@@ -1,5 +1,8 @@
-import { ComponentProps, forwardRef } from "react";
-import { DocumentDuplicateIcon } from "@heroicons/react/outline";
+import { ComponentProps, forwardRef, useMemo, useState } from "react";
+import {
+  CheckCircleIcon,
+  DocumentDuplicateIcon,
+} from "@heroicons/react/outline";
 
 import styles from "./copy-button.module.css";
 
@@ -10,18 +13,25 @@ interface Props
 
 const CopyButton = forwardRef<HTMLDivElement, Props>(
   ({ children, text, ...rest }, ref) => {
+    const [copied, setCopied] = useState(false);
     const onClick = () => {
-      navigator.clipboard?.writeText(text);
+      navigator.clipboard?.writeText(text).then(() => setCopied(true));
     };
+
+    const Icon = useMemo(
+      () => (copied ? CheckCircleIcon : DocumentDuplicateIcon),
+      [copied]
+    );
+    const title = copied ? "Copied" : "Click to copy to clipboard";
 
     return (
       <div
+        {...rest}
         ref={ref}
         role="button"
         className={styles.button}
         onClick={onClick}
-        title="Click to copy to clipboard"
-        {...rest}
+        title={title}
       >
         <span className={styles.buttonInner}>
           <span className={styles.dollar} aria-hidden="true">
@@ -31,7 +41,7 @@ const CopyButton = forwardRef<HTMLDivElement, Props>(
         </span>
         <span className={styles.srOnly}>(click to copy to clipboard)</span>
         <div>
-          <DocumentDuplicateIcon className={styles.icon} />
+          <Icon className={styles.icon} />
         </div>
       </div>
     );
