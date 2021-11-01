@@ -26,7 +26,6 @@ Mocking up web app with <b>Vital</b><sup><em>(speed)</em></sup><br>
 - 😃 [Hero icons](https://heroicons.com/)
 - ☁️ Deploy on Netlify, zero-config
 
-
 ### Coding Style
 
 - [ESLint](https://eslint.org/) - configured for React/Hooks & TypeScript
@@ -63,7 +62,7 @@ When you use this template, try follow the checklist to update your info properl
 - [ ] Change the title in `index.html`
 - [ ] Change the favicon in `public`
 - [ ] Modify the manifest in `public`
-- [ ] Clean up the README's 
+- [ ] Clean up the README's
 
 And, enjoy :)
 

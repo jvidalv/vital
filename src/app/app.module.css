@@ -1,89 +1,87 @@
 .main {
-    @apply px-4 min-h-screen sm:px-0 space-y-16 w-full bg-gray-900;
-    background-image: radial-gradient(hsla(0,0%,84.3%,.25) 1px,transparent 0),radial-gradient(hsla(0,0%,84.3%,.1) 1px,transparent 0);
-    background-size: 50px 50px;
-    background-position: 0 0, 25px 25px;
-    -webkit-animation: slide 2s linear infinite;
-    animation: slide 4s linear infinite;
+  @apply px-4 min-h-screen sm:px-0 space-y-16 w-full bg-gray-900;
+  background-image: radial-gradient(hsla(0, 0%, 84.3%, 0.25) 1px, transparent 0),
+    radial-gradient(hsla(0, 0%, 84.3%, 0.1) 1px, transparent 0);
+  background-size: 50px 50px;
+  background-position: 0 0, 25px 25px;
+  -webkit-animation: slide 2s linear infinite;
+  animation: slide 4s linear infinite;
 }
 
 @keyframes slide {
-    0% {
-        background-position: 0 0,25px 25px;
-    }
-    100% {
-        background-position: 50px 0,125px 25px;
-    }
+  0% {
+    background-position: 0 0, 25px 25px;
+  }
+  100% {
+    background-position: 50px 0, 125px 25px;
+  }
 }
 
 .header {
-    @apply pt-16 z-10 relative max-w-screen-lg xl:max-w-screen-xl mx-auto;
+  @apply pt-16 z-10 relative max-w-screen-lg xl:max-w-screen-xl mx-auto;
 }
 
 .headerTopTitle {
-    @apply text-2xl sm:text-4xl leading-none font-bold tracking-tight text-purple-400;
+  @apply text-2xl sm:text-4xl leading-none font-bold tracking-tight text-purple-400;
 }
 
 .headerTopTitleVital {
-    @apply text-[gold] opacity-75;
+  @apply text-[gold] opacity-75;
 }
 
 .headerTitle {
-    @apply text-6xl lg:text-7xl leading-none font-extrabold tracking-tight  mb-8 sm:mb-10 text-transparent bg-clip-text bg-gradient-to-br from-purple-400 to-purple-800;
+  @apply text-6xl lg:text-7xl leading-none font-extrabold tracking-tight  mb-8 sm:mb-10 text-transparent bg-clip-text bg-gradient-to-br from-purple-400 to-purple-800;
 }
 
 .headerDescription {
-    @apply max-w-screen-lg text-lg sm:text-2xl sm:leading-10 text-gray-300 font-medium mb-10 sm:mb-11;
+  @apply max-w-screen-lg text-lg sm:text-2xl sm:leading-10 text-gray-300 font-medium mb-10 sm:mb-11;
 }
 
 .headerDescriptionCode {
-    @apply font-mono text-blue-500 font-bold;
+  @apply font-mono text-blue-500 font-bold;
 }
 
 .copy {
-    @apply max-w-screen-lg xl:max-w-screen-xl mx-auto;
+  @apply max-w-screen-lg xl:max-w-screen-xl mx-auto;
 }
 
 .copyInner {
-    @apply sm:flex sm:space-x-6 space-y-4 sm:space-y-0 items-center;
+  @apply sm:flex sm:space-x-6 space-y-4 sm:space-y-0 items-center;
 }
 
 .features {
-    @apply max-w-screen-lg xl:max-w-screen-xl mx-auto grid grid-cols-10 gap-4;
+  @apply max-w-screen-lg xl:max-w-screen-xl mx-auto grid grid-cols-10 gap-4;
 }
 
 .cardWrapper {
-    @apply col-span-10 sm:col-span-5 opacity-0;
-    animation: show .5s forwards;
+  @apply col-span-10 sm:col-span-5 opacity-0;
+  animation: show 0.5s forwards;
 }
 
-
 @keyframes show {
-    to {
-        @apply opacity-100;
-    }
+  to {
+    @apply opacity-100;
+  }
 }
 
 .viteLogoContainer {
-    @apply absolute top-12 right-12 opacity-10 lg:opacity-50;
+  @apply absolute top-12 right-12 opacity-10 lg:opacity-50;
 }
 
 .viteLogo {
-    @apply w-56 h-56;
-    animation: bounce 8s cubic-bezier(.4,0,.2,1) infinite;
+  @apply w-56 h-56;
+  animation: bounce 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 @keyframes bounce {
-    40% {
-        -webkit-animation-timing-function: cubic-bezier(.4,0,.2,1);
-        animation-timing-function: cubic-bezier(.4,0,.2,1);
-        -webkit-transform: translateY(40px) rotate(
-                -1deg);
-        transform: translateY(40px) rotate(
-                -1deg);
-    }
+  40% {
+    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-transform: translateY(40px) rotate(-1deg);
+    transform: translateY(40px) rotate(-1deg);
+  }
 }
 
 .footer {
-    @apply pb-16 max-w-screen-lg xl:max-w-screen-xl mx-auto text-center sm:text-right text-gray-400 font-bold
+  @apply pb-16 max-w-screen-lg xl:max-w-screen-xl mx-auto text-center sm:text-right text-gray-400 font-bold;
 }

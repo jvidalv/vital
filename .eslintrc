@@ -14,9 +14,9 @@
     "comma-dangle": "off",
     "react/prop-types": "off",
     "react/no-unescaped-entities": "off",
-    "react/display-name" : "off",
+    "react/display-name": "off",
     "multiline-ternary": "off",
-    "@typescript-eslint/ban-ts-comment" : "warn",
+    "@typescript-eslint/ban-ts-comment": "warn",
     "no-use-before-define": "off",
     "space-before-function-paren": "off"
   }

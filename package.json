@@ -13,7 +13,18 @@
     "url": "https://github.com/jvidalv/vital/issues"
   },
   "keywords": [
-    "react", "vite", "typescript", "jest", "tailwind", "template", "starter", "css-modules", "eslint", "prettier", "husky", "commit-lint"
+    "react",
+    "vite",
+    "typescript",
+    "jest",
+    "tailwind",
+    "template",
+    "starter",
+    "css-modules",
+    "eslint",
+    "prettier",
+    "husky",
+    "commit-lint"
   ],
   "browserslist": [
     ">0.2%",
@@ -33,7 +44,7 @@
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "@heroicons/react" : "^1.0.5"
+    "@heroicons/react": "^1.0.5"
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",
@@ -42,7 +53,7 @@
     "@types/react-dom": "^17.0.10",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
-    "vite" : "^2.6.10",
+    "vite": "^2.6.10",
     "vite-preset-react": "^2.0.0",
     "typescript": "^4.4.4",
     "postcss": "^8.3.11",
@@ -60,8 +71,8 @@
     "@commitlint/config-conventional": "^13.2.0",
     "ts-jest": "^27.0.7",
     "jest": "^27.3.1",
-    "@testing-library/react" : "^12.1.2",
+    "@testing-library/react": "^12.1.2",
     "@testing-library/jest-dom": "^5.14.1",
-    "identity-obj-proxy" : "^3.0.0"
+    "identity-obj-proxy": "^3.0.0"
   }
 }
