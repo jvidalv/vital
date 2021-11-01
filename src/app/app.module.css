@@ -57,13 +57,6 @@
     animation: show .5s forwards;
 }
 
-.ctaContainer {
-    @apply pt-6;
-}
-
-.cta {
-    @apply text-white font-bold transition tracking-wide hover:text-blue-400;
-}
 
 @keyframes show {
     to {

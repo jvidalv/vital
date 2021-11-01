@@ -1,5 +1,5 @@
 import Logos from "components/atoms/logos";
-import Card from "components/molecules/card";
+import Card from "components/organisms/card";
 import {
   BeakerIcon,
   BookmarkAltIcon,
@@ -15,7 +15,7 @@ import {
 } from "@heroicons/react/outline";
 import { QuestionMarkCircleIcon } from "@heroicons/react/solid";
 import Button from "components/atoms/button";
-import CopyButton from "components/organisms/copy-button";
+import CopyButton from "components/molecules/copy-button";
 
 import styles from "./app.module.css";
 
@@ -145,12 +145,10 @@ const App = (): JSX.Element => {
               title={props.name}
               description={props.description}
               Icon={props.logo}
-              cta={
-                <div className={styles.ctaContainer}>
-                  <a className={styles.cta} href={props.docs} target="_blank">
-                    Visit documentation →
-                  </a>
-                </div>
+              callToAction={
+                <Card.CallToAction as="a" href={props.docs} target="_blank">
+                  Visit documentation →
+                </Card.CallToAction>
               }
             />
           </div>
