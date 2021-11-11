@@ -16,15 +16,15 @@ Mocking up web app with <b>Vital</b><sup><em>(speed)</em></sup><br>
 
 ## Features
 
-- ⚡️  [React 17](https://beta.reactjs.org/)
-- 🦾  TypeScript, of course
-- 🫀  [Jest](https://jestjs.io/) - unitary testing made easy
-- 🎨  [Tailwind with JIT](https://tailwindcss.com/) - next generation utility-first CSS
-- 🪢  [CSS Modules](https://github.com/css-modules/css-modules)
-- 👑  [Atomic Design organization](https://bradfrost.com/blog/post/atomic-web-design/)
-- 🗂  [Absolute imports](https://github.com/vitejs/vite/issues/88#issuecomment-762415200)
-- 😃  [Hero icons](https://heroicons.com/)
-- ☁️  Deploy on Netlify, zero-config
+- ⚡️ [React 17](https://beta.reactjs.org/)
+- 🦾 TypeScript, of course
+- 🫀 [Jest](https://jestjs.io/) - unitary testing made easy
+- 🎨 [Tailwind with JIT](https://tailwindcss.com/) - next generation utility-first CSS
+- 🪢 [CSS Modules](https://github.com/css-modules/css-modules)
+- 👑 [Atomic Design organization](https://bradfrost.com/blog/post/atomic-web-design/)
+- 🗂 [Absolute imports](https://github.com/vitejs/vite/issues/88#issuecomment-762415200)
+- 😃 [Hero icons](https://heroicons.com/)
+- ☁️ Deploy on Netlify, zero-config
 
 ### Coding Style
 
@@ -91,7 +91,9 @@ And you will see the generated file in `dist` that ready to be served.
 Go to [Netlify](https://app.netlify.com/start) and select your repository, `OK` along the way, and your App will be live in a minute.
 
 ### Issues
+
 #### Husky
+
 If pre-commit hooks are not working be sure that you have installed husky: `husky install`.
 
 By default this command should be triggered after yarn/npm deps are installed.
