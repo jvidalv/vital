@@ -1,7 +1,6 @@
 const forms = require("@tailwindcss/forms");
 
 module.exports = {
-  mode: "jit",
-  purge: ["./*.html", "./src/**/*.{css}"],
+  content: ["./*.html", "./src/**/*.{css}"],
   plugins: [forms],
 };
