@@ -12,7 +12,7 @@ interface Props
 }
 
 const CopyButton = forwardRef<HTMLDivElement, Props>(
-  ({ children, text, ...rest }, ref) => {
+  ({ text, ...rest }, ref) => {
     const [copied, setCopied] = useState(false);
     const onClick = () => {
       navigator.clipboard?.writeText(text).then(() => setCopied(true));
