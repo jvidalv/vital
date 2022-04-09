@@ -16,7 +16,7 @@ Mocking up web app with <b>Vital</b><sup><em>(speed)</em></sup><br>
 
 ## Features
 
-- ⚡️ [React 17](https://beta.reactjs.org/)
+- ⚡️ [React 18](https://beta.reactjs.org/)
 - 🦾 TypeScript, of course
 - 🫀 [Jest](https://jestjs.io/) - unitary testing made easy
 - 🎨 [Tailwind with JIT](https://tailwindcss.com/) - next generation utility-first CSS
