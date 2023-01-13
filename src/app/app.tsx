@@ -2,18 +2,18 @@ import Logos from "components/atoms/logos";
 import Card from "components/organisms/card";
 import {
   BeakerIcon,
-  BookmarkAltIcon,
+  BookmarkIcon,
   CakeIcon,
   ChevronDownIcon,
   CubeTransparentIcon,
   FilmIcon,
-  LocationMarkerIcon,
+  PhoneXMarkIcon,
   LockClosedIcon,
-  MenuIcon,
+  Bars3Icon,
   PencilIcon,
-  PhotographIcon,
-} from "@heroicons/react/outline";
-import { QuestionMarkCircleIcon } from "@heroicons/react/solid";
+  PhotoIcon,
+} from "@heroicons/react/24/outline";
+import { QuestionMarkCircleIcon } from "@heroicons/react/24/solid";
 import Button from "components/atoms/button";
 import CopyButton from "components/molecules/copy-button";
 
@@ -37,13 +37,13 @@ const features = [
     name: "TypeScript",
     description:
       "Strongly typed programming language that builds on JavaScript.",
-    logo: BookmarkAltIcon,
+    logo: BookmarkIcon,
     docs: "https://www.typescriptlang.org/",
   },
   {
     name: "Tailwind with JIT",
     description: "A utility-first CSS framework packed with classes.",
-    logo: PhotographIcon,
+    logo: PhotoIcon,
     docs: "https://tailwindcss.com/",
   },
   {
@@ -68,7 +68,7 @@ const features = [
   {
     name: "Prettier",
     description: "An opinionated code formatter.",
-    logo: MenuIcon,
+    logo: Bars3Icon,
     docs: "https://prettier.io/",
   },
   {
@@ -88,7 +88,7 @@ const features = [
     name: "Atomic design",
     description:
       "We’re not designing pages, we’re designing systems of components.",
-    logo: LocationMarkerIcon,
+    logo: PhoneXMarkIcon,
     docs: "https://bradfrost.com/blog/post/atomic-web-design/",
   },
   {
@@ -145,11 +145,7 @@ const App = (): JSX.Element => {
               title={props.name}
               description={props.description}
               Icon={props.logo}
-              callToAction={
-                <Card.CallToAction as="a" href={props.docs} target="_blank">
-                  Visit documentation →
-                </Card.CallToAction>
-              }
+              href={props.docs}
             />
           </div>
         ))}

@@ -7,11 +7,11 @@ export interface CardProps
   title: string;
   description: string;
   Icon: (props: ComponentProps<"svg">) => JSX.Element;
-  callToAction: JSX.Element;
+  href: string;
 }
 
 const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ title, description, callToAction, Icon, ...rest }, ref) => {
+  ({ title, description, Icon, href, ...rest }, ref) => {
     return (
       <div ref={ref} className={styles.card} {...rest}>
         <div>
@@ -22,7 +22,16 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
         <div className={styles.content}>
           <h3 className={styles.title}>{title}</h3>
           <p className={styles.description}>{description}</p>
-          {callToAction}
+          <div className={styles.callToActionContainer}>
+            <a
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              className={styles.callToActionElement}
+            >
+              Visit documentation →
+            </a>
+          </div>
         </div>
       </div>
     );
