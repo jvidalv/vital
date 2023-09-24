@@ -1,4 +1,10 @@
-import { forwardRef, ComponentProps } from "react";
+import {
+  forwardRef,
+  ComponentProps,
+  RefAttributes,
+  ForwardRefExoticComponent,
+  SVGProps,
+} from "react";
 
 import styles from "./card.module.css";
 
@@ -6,7 +12,12 @@ export interface CardProps
   extends Omit<ComponentProps<"div">, "className" | "children"> {
   title: string;
   description: string;
-  Icon: (props: ComponentProps<"svg">) => JSX.Element;
+  Icon: ForwardRefExoticComponent<
+    Omit<SVGProps<SVGSVGElement>, "ref"> & {
+      title?: string | undefined;
+      titleId?: string | undefined;
+    } & RefAttributes<SVGSVGElement>
+  >;
   href: string;
 }
 

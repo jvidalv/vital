@@ -7,6 +7,14 @@ export default defineConfig((configEnv) => {
 
   return {
     plugins: [react()],
+    server: {
+      port: 3000,
+    },
+    test: {
+      globals: true,
+      environment: "happy-dom",
+      setupFiles: "./src/infrastructure/tests.setup.ts",
+    },
     resolve: {
       alias: {
         app: resolve(__dirname, "src", "app"),

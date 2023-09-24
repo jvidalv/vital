@@ -100,9 +100,9 @@ const features = [
   },
 ];
 
-const App = (): JSX.Element => {
+function App() {
   return (
-    <main className={styles.main}>
+    <main>
       <header className={styles.header}>
         <h3 className={styles.headerTopTitle}>
           <span className={styles.headerTopTitleVital}>Vital</span> @ Vite
@@ -157,6 +157,6 @@ const App = (): JSX.Element => {
       </footer>
     </main>
   );
-};
+}
 
 export default App;
