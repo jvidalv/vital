@@ -18,9 +18,8 @@ Mocking up web app with <b>Vital</b><sup><em>(speed)</em></sup><br>
 
 - ⚡️ [React 18](https://beta.reactjs.org/)
 - 🦾 TypeScript, of course
-- 🫀 [Jest](https://jestjs.io/) - unitary testing made easy
+- 🫀 [Vitest](https://vitest.dev/) - unitary testing made easy
 - 🎨 [Tailwind with JIT](https://tailwindcss.com/) - next generation utility-first CSS
-- 🪢 [CSS Modules](https://github.com/css-modules/css-modules)
 - 👑 [Atomic Design organization](https://bradfrost.com/blog/post/atomic-web-design/)
 - 🗂 [Absolute imports](https://github.com/vitejs/vite/issues/88#issuecomment-762415200)
 - 😃 [Hero icons](https://heroicons.com/)
@@ -70,10 +69,10 @@ And, enjoy :)
 
 ### Development
 
-Just run and visit http://localhost:3000
+Just run and visit http://127.0.0.1:3000/
 
 ```bash
-yarn start
+yarn dev
 ```
 
 ### Build

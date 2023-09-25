@@ -8,7 +8,6 @@ import {
   CubeTransparentIcon,
   FilmIcon,
   PhoneXMarkIcon,
-  LockClosedIcon,
   Bars3Icon,
   PencilIcon,
   PhotoIcon,
@@ -39,23 +38,16 @@ const features = [
     docs: "https://www.typescriptlang.org/",
   },
   {
-    name: "Tailwind with JIT",
+    name: "Tailwind",
     description: "A utility-first CSS framework packed with classes.",
     logo: PhotoIcon,
     docs: "https://tailwindcss.com/",
   },
   {
-    name: "Jest",
+    name: "Vitest",
     description: "Testing Framework with a focus on simplicity.",
     logo: QuestionMarkCircleIcon,
-    docs: "https://jestjs.io/",
-  },
-  {
-    name: "CSS Modules",
-    description:
-      "CSS file in which all class names and animation names are scoped locally by default.",
-    logo: LockClosedIcon,
-    docs: "https://github.com/css-modules/css-modules",
+    docs: "https://vitest.dev/",
   },
   {
     name: "ESLint",
@@ -102,13 +94,13 @@ function App() {
   return (
     <main>
       <header className="pt-16 z-10 relative max-w-screen-lg xl:max-w-screen-xl mx-auto">
-        <h3 className="text-2xl sm:text-4xl leading-none font-bold tracking-tight text-purple-400">
+        <h3 className="text-2xl sm:text-4xl leading-none font-bold tracking-tight text-purple-200">
           <span className="text-[gold] opacity-75">Vital</span> @ Vite Template
         </h3>
-        <h1 className="text-6xl lg:text-7xl leading-none font-extrabold tracking-tight mb-8 sm:mb-10 text-transparent bg-clip-text">
+        <h1 className="text-6xl lg:text-7xl leading-none font-extrabold tracking-tight mb-8 sm:mb-10 text-purple-400">
           React + TypeScript + Tailwind
         </h1>
-        <p className="max-w-screen-lg text-lg sm:text-2xl sm:leading-10 text-gray-300 font-medium mb-10 sm:mb-11">
+        <p className="max-w-screen-lg text-lg sm:text-xl  text-gray-300 font-medium mb-10 sm:mb-11">
           Bootstrap your web projects faster than ever. Comes with:{" "}
           <code className="font-mono text-blue-500 font-bold">CSS-Modules</code>
           , <code className="font-mono text-blue-500 font-bold">Jest</code>,{" "}
@@ -136,7 +128,7 @@ function App() {
       </section>
       <section className="max-w-screen-lg xl:max-w-screen-xl mx-auto grid grid-cols-10 gap-4">
         {features.map((props, index) => (
-          <div key={index} className="col-span-10 sm:col-span-5 opacity-0">
+          <div key={index} className="col-span-10 sm:col-span-5">
             <Card
               title={props.name}
               description={props.description}
