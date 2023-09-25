@@ -4,8 +4,6 @@ import {
   DocumentDuplicateIcon,
 } from "@heroicons/react/24/outline";
 
-import styles from "./copy-button.module.css";
-
 interface Props
   extends Omit<ComponentProps<"div">, "className" | "onClick" | "title"> {
   text: string;
@@ -29,19 +27,19 @@ const CopyButton = forwardRef<HTMLDivElement, Props>(
         {...rest}
         ref={ref}
         role="button"
-        className={styles.button}
+        className="w-full sm:w-auto flex-none bg-gray-50 text-gray-400 hover:text-gray-900 font-mono leading-6 py-3 px-2 sm:px-6 border border-gray-200 rounded-xl flex items-center justify-center space-x-2 sm:space-x-4 focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-300 focus:outline-none transition-colors duration-200"
         onClick={onClick}
         title={title}
       >
-        <span className={styles.buttonInner}>
-          <span className={styles.dollar} aria-hidden="true">
+        <span className="text-gray-900">
+          <span className="inline text-gray-500" aria-hidden="true">
             ${" "}
           </span>
           {text}
         </span>
-        <span className={styles.srOnly}>(click to copy to clipboard)</span>
+        <span className="sr-only">(click to copy to clipboard)</span>
         <div>
-          <Icon className={styles.icon} />
+          <Icon className="w-6 h-6" />
         </div>
       </div>
     );

@@ -17,8 +17,6 @@ import { QuestionMarkCircleIcon } from "@heroicons/react/24/solid";
 import Button from "components/atoms/button";
 import CopyButton from "components/molecules/copy-button";
 
-import styles from "./app.module.css";
-
 const features = [
   {
     name: "Vite",
@@ -103,44 +101,42 @@ const features = [
 function App() {
   return (
     <main>
-      <header className={styles.header}>
-        <h3 className={styles.headerTopTitle}>
-          <span className={styles.headerTopTitleVital}>Vital</span> @ Vite
-          Template
+      <header className="pt-16 z-10 relative max-w-screen-lg xl:max-w-screen-xl mx-auto">
+        <h3 className="text-2xl sm:text-4xl leading-none font-bold tracking-tight text-purple-400">
+          <span className="text-[gold] opacity-75">Vital</span> @ Vite Template
         </h3>
-        <h1 className={styles.headerTitle}>React + TypeScript + Tailwind</h1>
-        <p className={styles.headerDescription}>
+        <h1 className="text-6xl lg:text-7xl leading-none font-extrabold tracking-tight mb-8 sm:mb-10 text-transparent bg-clip-text">
+          React + TypeScript + Tailwind
+        </h1>
+        <p className="max-w-screen-lg text-lg sm:text-2xl sm:leading-10 text-gray-300 font-medium mb-10 sm:mb-11">
           Bootstrap your web projects faster than ever. Comes with:{" "}
-          <code className={styles.headerDescriptionCode}>CSS-Modules</code>,{" "}
-          <code className={styles.headerDescriptionCode}>Jest</code>,{" "}
-          <code className={styles.headerDescriptionCode}>Husky</code>,{" "}
-          <code className={styles.headerDescriptionCode}>Commit-lint</code>,{" "}
-          <code className={styles.headerDescriptionCode}>ESLint</code>,{" "}
-          <code className={styles.headerDescriptionCode}>Prettier</code> and{" "}
-          <code className={styles.headerDescriptionCode}>
+          <code className="font-mono text-blue-500 font-bold">CSS-Modules</code>
+          , <code className="font-mono text-blue-500 font-bold">Jest</code>,{" "}
+          <code className="font-mono text-blue-500 font-bold">Husky</code>,{" "}
+          <code className="font-mono text-blue-500 font-bold">Commit-lint</code>
+          , <code className="font-mono text-blue-500 font-bold">ESLint</code>,{" "}
+          <code className="font-mono text-blue-500 font-bold">Prettier</code>{" "}
+          and{" "}
+          <code className="font-mono text-blue-500 font-bold">
             Atomic organization for components
           </code>
           . Configured and ready to go.
         </p>
-        <div className={styles.viteLogoContainer}>
-          <Logos.Vite className={styles.viteLogo} />
+        <div className="absolute top-12 right-12 opacity-10 lg:opacity-50">
+          <Logos.Vite className="w-56 h-56" />
         </div>
       </header>
-      <section className={styles.copy}>
-        <div className={styles.copyInner}>
+      <section className="max-w-screen-lg xl:max-w-screen-xl mx-auto">
+        <div className="sm:flex sm:space-x-6 space-y-4 sm:space-y-0 items-center">
           <a href="https://github.com/jvidalv/vital">
             <Button>Visit on Github</Button>
           </a>
           <CopyButton text="npx degit jvidalv/vital my-app" />
         </div>
       </section>
-      <section className={styles.features}>
+      <section className="max-w-screen-lg xl:max-w-screen-xl mx-auto grid grid-cols-10 gap-4">
         {features.map((props, index) => (
-          <div
-            key={index}
-            className={styles.cardWrapper}
-            style={{ animationDelay: `${index * 0.1 + 0.1}s` }}
-          >
+          <div key={index} className="col-span-10 sm:col-span-5 opacity-0">
             <Card
               title={props.name}
               description={props.description}
@@ -150,7 +146,7 @@ function App() {
           </div>
         ))}
       </section>
-      <footer className={styles.footer}>
+      <footer className="pb-16 max-w-screen-lg xl:max-w-screen-xl mx-auto text-center sm:text-right text-gray-400 font-bold">
         <a href="https://github.com/jvidalv">
           Josep Vidal @ {new Date().getFullYear()}
         </a>
