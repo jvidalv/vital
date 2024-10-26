@@ -3,16 +3,13 @@ import Card from "components/organisms/card";
 import {
   BeakerIcon,
   BookmarkIcon,
-  CakeIcon,
   ChevronDownIcon,
   CubeTransparentIcon,
-  FilmIcon,
   PhoneXMarkIcon,
   Bars3Icon,
   PencilIcon,
   PhotoIcon,
 } from "@heroicons/react/24/outline";
-import { QuestionMarkCircleIcon } from "@heroicons/react/24/solid";
 import Button from "components/atoms/button";
 import CopyButton from "components/molecules/copy-button";
 
@@ -44,12 +41,6 @@ const features = [
     docs: "https://tailwindcss.com/",
   },
   {
-    name: "Vitest",
-    description: "Testing Framework with a focus on simplicity.",
-    logo: QuestionMarkCircleIcon,
-    docs: "https://vitest.dev/",
-  },
-  {
     name: "ESLint",
     description: "Find and fix problems in your JavaScript code.",
     logo: BeakerIcon,
@@ -62,19 +53,6 @@ const features = [
     docs: "https://prettier.io/",
   },
   {
-    name: "Husky",
-    description:
-      "Lint your commit messages, run tests, lint code, etc... when you commit or push.",
-    logo: CakeIcon,
-    docs: "https://github.com/typicode/husky",
-  },
-  {
-    name: "Commit-lint",
-    description: "Helps your team adhering to a commit convention.",
-    logo: FilmIcon,
-    docs: "https://github.com/conventional-changelog/commitlint",
-  },
-  {
     name: "Atomic design",
     description:
       "We’re not designing pages, we’re designing systems of components.",
@@ -82,7 +60,7 @@ const features = [
     docs: "https://bradfrost.com/blog/post/atomic-web-design/",
   },
   {
-    name: "Absolute imports",
+    name: "Relative imports",
     description:
       "Import resource using its full path from the project’s src folder.",
     logo: ChevronDownIcon,

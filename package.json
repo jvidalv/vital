@@ -1,5 +1,6 @@
 {
   "name": "vital",
+  "type": "module",
   "version": "1.0.0",
   "description": "Starter template for Vite with React (TypeScript). Supports Tailwind. Vitest and @react/testing-library configured and ready to go. Also ESLint, Prettier, Husky, Commit-lint and Atomic Design for components.",
   "homepage": "https://github.com/jvidalv/vital#readme",
@@ -16,14 +17,11 @@
     "react",
     "vite",
     "typescript",
-    "vitest",
     "tailwind",
     "template",
     "starter",
     "eslint",
-    "prettier",
-    "husky",
-    "commit-lint"
+    "prettier"
   ],
   "browserslist": [
     ">0.2%",
@@ -31,49 +29,38 @@
     "not IE 11"
   ],
   "engines": {
-    "node": ">=14",
+    "node": ">=18",
     "yarn": ">=1.22.5"
   },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "test": "vitest",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "postinstall": "husky install"
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@heroicons/react": "2.0.18",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "@heroicons/react": "2.1.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.4.2",
-    "@commitlint/config-conventional": "17.4.2",
-    "@tailwindcss/forms": "0.5.3",
-    "@testing-library/jest-dom": "^6.1.3",
-    "@testing-library/react": "13.4.0",
-    "@types/node": "20.6.5",
-    "@types/react": "^18.2.18",
-    "@types/react-dom": "^18.2.7",
-    "@typescript-eslint/eslint-plugin": "^6.2.1",
-    "@typescript-eslint/parser": "^6.2.1",
-    "@vitejs/plugin-react": "^4.0.4",
-    "autoprefixer": "10.4.13",
-    "eslint": "^8.46.0",
-    "eslint-plugin-import": "2.27.4",
-    "eslint-plugin-react": "7.32.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.3",
-    "happy-dom": "^12.1.6",
-    "husky": "8.0.3",
-    "lint-staged": "13.1.0",
-    "postcss": "8.4.21",
-    "prettier": "2.8.2",
-    "tailwindcss": "3.2.4",
-    "typescript": "^5.0.2",
-    "vite": "^4.4.8",
-    "vite-preset-react": "2.3.0",
-    "vitest": "^0.34.5"
+    "@eslint/js": "9.13.0",
+    "@commitlint/cli": "19.5.0",
+    "@tailwindcss/forms": "0.5.9",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "@vitejs/plugin-react": "4.3.3",
+    "autoprefixer": "10.4.20",
+    "eslint": "9.13.0",
+    "eslint-plugin-react-hooks": "5.0.0",
+    "eslint-plugin-react-refresh": "0.4.14",
+    "lint-staged": "15.2.10",
+    "postcss": "8.4.47",
+    "prettier": "3.3.3",
+    "tailwindcss": "3.4.14",
+    "typescript": "5.6.3",
+    "typescript-eslint": "8.10.0",
+    "vite": "5.4.10",
+    "vite-preset-react": "2.3.0"
   }
 }

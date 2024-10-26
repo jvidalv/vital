@@ -18,10 +18,9 @@ Mocking up web app with <b>Vital</b><sup><em>(speed)</em></sup><br>
 
 - ⚡️ [React 18](https://beta.reactjs.org/)
 - 🦾 TypeScript, of course
-- 🫀 [Vitest](https://vitest.dev/) - unitary testing made easy
-- 🎨 [Tailwind with JIT](https://tailwindcss.com/) - next generation utility-first CSS
+- 🎨 [Tailwind](https://tailwindcss.com/) - next generation utility-first CSS
 - 👑 [Atomic Design organization](https://bradfrost.com/blog/post/atomic-web-design/)
-- 🗂 [Absolute imports](https://github.com/vitejs/vite/issues/88#issuecomment-762415200)
+- 🗂 [Relative imports](https://github.com/vitejs/vite/issues/88#issuecomment-762415200)
 - 😃 [Hero icons](https://heroicons.com/)
 - ☁️ Deploy on Netlify, zero-config
 
@@ -33,7 +32,6 @@ Mocking up web app with <b>Vital</b><sup><em>(speed)</em></sup><br>
 ### Dev tools
 
 - [TypeScript](https://www.typescriptlang.org/)
-- [Commit lint](https://github.com/conventional-changelog/commitlint) - helps your team adhering to a commit convention
 - [Netlify](https://www.netlify.com/) - zero-config deployment
 
 ## Try it now!
