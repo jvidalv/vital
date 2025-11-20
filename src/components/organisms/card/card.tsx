@@ -24,7 +24,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
     return (
       <div
         ref={ref}
-        className="bg-white bg-opacity-5 rounded-md shadow p-4 relative overflow-hidden h-full"
+        className="bg-white/10 bg-opacity-5 rounded-md shadow p-4 relative overflow-hidden h-full"
         {...rest}
       >
         <div>
