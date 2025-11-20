@@ -16,23 +16,28 @@ Mocking up web app with <b>Vital</b><sup><em>(speed)</em></sup><br>
 
 ## Features
 
-- ⚡️ [React 18](https://beta.reactjs.org/)
-- 🦾 TypeScript, of course
-- 🎨 [Tailwind](https://tailwindcss.com/) - next generation utility-first CSS
-- 👑 [Atomic Design organization](https://bradfrost.com/blog/post/atomic-web-design/)
-- 🗂 [Relative imports](https://github.com/vitejs/vite/issues/88#issuecomment-762415200)
-- 😃 [Hero icons](https://heroicons.com/)
+- ⚡️ [Vite 7](https://vitejs.dev/) - Next generation frontend tooling
+- ⚛️ [React 19](https://react.dev/) - Latest version with improved performance
+- 🦾 [TypeScript 5.9](https://www.typescriptlang.org/) - Strongly typed JavaScript
+- 🎨 [Tailwind CSS v4](https://tailwindcss.com/) - Latest utility-first CSS framework with CSS-based config
+- 👑 [Atomic Design organization](https://bradfrost.com/blog/post/atomic-web-design/) - Component architecture
+- 🗂 [Path aliases](https://github.com/vitejs/vite/issues/88#issuecomment-762415200) - Clean imports
+- 😃 [Hero Icons](https://heroicons.com/) - Beautiful hand-crafted SVG icons
 - ☁️ Deploy on Netlify, zero-config
 
-### Coding Style
+### Code Quality
 
-- [ESLint](https://eslint.org/) - configured for React/Hooks & TypeScript
-- [Prettier](https://prettier.io/)
+- [ESLint 9](https://eslint.org/) - Find and fix problems in JavaScript/TypeScript
+- [Prettier 3](https://prettier.io/) - Opinionated code formatter
+- [Commitlint](https://commitlint.js.org/) - Lint commit messages
+- [lint-staged](https://github.com/okonet/lint-staged) - Run linters on git staged files
 
-### Dev tools
+### Dev Tools
 
-- [TypeScript](https://www.typescriptlang.org/)
-- [Netlify](https://www.netlify.com/) - zero-config deployment
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react) - Official React plugin for Vite
+- [PostCSS](https://postcss.org/) - Transform CSS with JavaScript
+- [Netlify](https://www.netlify.com/) - Zero-config deployment
 
 ## Try it now!
 
@@ -86,14 +91,6 @@ And you will see the generated file in `dist` that ready to be served.
 ### Deploy on Netlify
 
 Go to [Netlify](https://app.netlify.com/start) and select your repository, `OK` along the way, and your App will be live in a minute.
-
-### Issues
-
-#### Husky
-
-If pre-commit hooks are not working be sure that you have installed husky: `husky install`.
-
-By default this command should be triggered after yarn/npm deps are installed.
 
 ## Why
 
