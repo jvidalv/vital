@@ -210,12 +210,13 @@ yarn dev
 
 1. **Classes not in content paths**
 
-   Check `tailwind.config.js`:
-   ```javascript
-   export default {
-     content: ["./src/**/*.tsx", "./src/**/*.css"]
-   };
+   Check `src/index.css` (Tailwind v4 uses CSS-first config):
+   ```css
+   @import "tailwindcss" source(".");
    ```
+
+   This tells Tailwind to scan all files in the current directory (src/) and subdirectories.
+   The path is relative to the CSS file location.
 
 2. **Classes in template literals**
 
@@ -682,7 +683,7 @@ When reporting an issue, include:
 | Build fails | `rm -rf node_modules/.vite dist && yarn build` |
 | HMR slow | `rm -rf node_modules/.vite` |
 | Import errors | Check path aliases in `tsconfig.app.json` and `vite.config.ts` |
-| Tailwind not working | Check `tailwind.config.js` content paths |
+| Tailwind not working | Check `src/index.css` source directive: `@import "tailwindcss" source(".")` |
 | Port in use | `lsof -ti:3000 \| xargs kill -9` |
 | Dependencies weird | `rm -rf node_modules yarn.lock && yarn install` |
 

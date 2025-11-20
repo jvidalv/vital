@@ -114,30 +114,37 @@ yarn preview  # Preview production build locally
 
 ## Tailwind CSS v4 Setup
 
-**CRITICAL**: This project uses **Tailwind CSS v4**, which has a different configuration approach than v3.
+**CRITICAL**: This project uses **Tailwind CSS v4**, which has a **CSS-first configuration** approach.
 
-### Configuration (tailwind.config.js)
-```javascript
-export default {
-  content: ["./src/**/*.tsx", "./src/**/*.css"]
-};
-```
+### Configuration (Pure CSS - NO tailwind.config.js)
 
-### CSS Import (src/index.css)
+Tailwind v4 does NOT use `tailwind.config.js`. All configuration is done in CSS using special directives.
+
+### CSS Configuration (src/index.css)
 ```css
-@import "tailwindcss";
-@import "@tailwindcss/forms";
+@import "tailwindcss" source(".");
+@plugin "@tailwindcss/forms";
 
 @layer base {
   /* Custom base styles */
 }
 ```
 
+**Key directives:**
+- `@import "tailwindcss" source(".")` - Imports Tailwind and sets content path (relative to CSS file)
+- `@plugin "@tailwindcss/forms"` - Loads official plugins
+- `@theme { }` - Define custom design tokens (colors, spacing, fonts, etc.)
+- `@utility { }` - Create custom utility classes
+- `@source` - Additional content paths or safelisting
+
 **Key differences from v3:**
+- **NO tailwind.config.js** - All configuration in CSS
 - No separate `@tailwind base/components/utilities` directives
 - Use `@import "tailwindcss"` instead
-- Plugins imported via CSS, not JS config
-- Minimal JS configuration
+- Content paths specified with `source()` function (relative to CSS file) or `@source` directive
+- Plugins loaded via `@plugin` directive, not JS config
+- Theme customization via `@theme` directive with CSS variables
+- Requires `@tailwindcss/postcss` package for PostCSS integration
 
 ## Atomic Design Architecture
 
@@ -301,8 +308,13 @@ yarn build
 
 ### 1. Tailwind v4 is New
 - Most online tutorials cover Tailwind v3
-- Configuration is now CSS-based, not JS-based
-- Import syntax is different: `@import "tailwindcss"`
+- **NO tailwind.config.js** - All configuration in CSS
+- Configuration is 100% CSS-based using directives
+- Import syntax: `@import "tailwindcss" source(".")`
+- Content paths via `source()` function (relative to CSS file location), not JS config
+- Plugins via `@plugin` directive, not `@import`
+- Requires `@tailwindcss/postcss` package for PostCSS
+- Theme customization via `@theme` directive with CSS variables
 
 ### 2. ESLint 9 Flat Config
 - Uses new flat config format (not `.eslintrc`)
@@ -365,7 +377,7 @@ yarn build
 - **TypeScript (app)**: `tsconfig.app.json`
 - **TypeScript (node)**: `tsconfig.node.json`
 - **ESLint**: `eslint.config.js`
-- **Tailwind**: `tailwind.config.js`
+- **Tailwind**: `src/index.css` (CSS-first config, NO tailwind.config.js)
 - **PostCSS**: `postcss.config.js`
 - **Prettier**: Uses defaults (no config file)
 - **Commitlint**: `commitlint.config.js`
