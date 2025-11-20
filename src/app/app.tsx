@@ -15,54 +15,54 @@ import CopyButton from "components/molecules/copy-button";
 
 const features = [
   {
-    name: "Vite",
+    name: "Vite 7",
     description:
-      "Faster and leaner development experience for modern web projects.",
+      "Next-generation frontend tooling with lightning-fast HMR and optimized builds.",
     logo: CubeTransparentIcon,
     docs: "https://vitejs.dev/",
   },
   {
-    name: "React",
-    description: "JavaScript library for building user interfaces.",
+    name: "React 19",
+    description: "Latest React with improved performance and new features.",
     logo: PencilIcon,
-    docs: "https://reactjs.org/",
+    docs: "https://react.dev/",
   },
   {
-    name: "TypeScript",
+    name: "TypeScript 5.9",
     description:
-      "Strongly typed programming language that builds on JavaScript.",
+      "Strict type checking for robust and maintainable code.",
     logo: BookmarkIcon,
     docs: "https://www.typescriptlang.org/",
   },
   {
-    name: "Tailwind",
-    description: "A utility-first CSS framework packed with classes.",
+    name: "Tailwind CSS v4",
+    description: "CSS-first utility framework with new directives and improved DX.",
     logo: PhotoIcon,
     docs: "https://tailwindcss.com/",
   },
   {
-    name: "ESLint",
-    description: "Find and fix problems in your JavaScript code.",
+    name: "ESLint 9",
+    description: "Flat config format for modern JavaScript and TypeScript linting.",
     logo: BeakerIcon,
     docs: "https://eslint.org/",
   },
   {
-    name: "Prettier",
-    description: "An opinionated code formatter.",
+    name: "Prettier 3",
+    description: "Opinionated code formatter for consistent code style.",
     logo: Bars3Icon,
     docs: "https://prettier.io/",
   },
   {
-    name: "Atomic design",
+    name: "Atomic Design",
     description:
-      "We’re not designing pages, we’re designing systems of components.",
+      "Structured component architecture from atoms to organisms.",
     logo: PhoneXMarkIcon,
     docs: "https://bradfrost.com/blog/post/atomic-web-design/",
   },
   {
-    name: "Relative imports",
+    name: "Path Aliases",
     description:
-      "Import resource using its full path from the project’s src folder.",
+      "Clean imports using path aliases for components, app, and hooks.",
     logo: ChevronDownIcon,
     docs: "https://github.com/vitejs/vite/issues/88#issuecomment-762415200",
   },
@@ -76,7 +76,7 @@ function App() {
           <span className="text-[gold] opacity-75">Vital</span> @ Vite Template
         </h3>
         <h1 className="text-6xl lg:text-7xl leading-none font-extrabold tracking-tight mb-8 sm:mb-10 text-purple-400">
-          React + TypeScript + Tailwind
+          React 19 + TypeScript + Tailwind v4
         </h1>
         <p className="max-w-screen-lg text-lg sm:text-xl  text-gray-300 font-medium mb-10 sm:mb-11">
           Bootstrap your web projects faster than ever. Comes with:{" "}
