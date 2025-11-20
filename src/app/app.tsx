@@ -80,15 +80,14 @@ function App() {
         </h1>
         <p className="max-w-screen-lg text-lg sm:text-xl  text-gray-300 font-medium mb-10 sm:mb-11">
           Bootstrap your web projects faster than ever. Comes with:{" "}
-          <code className="font-mono text-blue-500 font-bold">CSS-Modules</code>
-          , <code className="font-mono text-blue-500 font-bold">Jest</code>,{" "}
-          <code className="font-mono text-blue-500 font-bold">Husky</code>,{" "}
-          <code className="font-mono text-blue-500 font-bold">Commit-lint</code>
+          <code className="font-mono text-blue-500 font-bold">Tailwind CSS v4</code>
+          , <code className="font-mono text-blue-500 font-bold">Commitlint</code>
           , <code className="font-mono text-blue-500 font-bold">ESLint</code>,{" "}
-          <code className="font-mono text-blue-500 font-bold">Prettier</code>{" "}
+          <code className="font-mono text-blue-500 font-bold">Prettier</code>,{" "}
+          <code className="font-mono text-blue-500 font-bold">lint-staged</code>{" "}
           and{" "}
           <code className="font-mono text-blue-500 font-bold">
-            Atomic organization for components
+            Atomic Design pattern
           </code>
           . Configured and ready to go.
         </p>
