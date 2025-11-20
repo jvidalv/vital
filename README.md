@@ -23,6 +23,7 @@ Mocking up web app with <b>Vital</b><sup><em>(speed)</em></sup><br>
 - 👑 [Atomic Design organization](https://bradfrost.com/blog/post/atomic-web-design/) - Component architecture
 - 🗂 [Path aliases](https://github.com/vitejs/vite/issues/88#issuecomment-762415200) - Clean imports
 - 😃 [Hero Icons](https://heroicons.com/) - Beautiful hand-crafted SVG icons
+- 🤖 **LLM-ready** - Comprehensive AI assistance docs ([CLAUDE.md](CLAUDE.md), [AGENTS.md](AGENTS.md), [BUGBOT.md](BUGBOT.md))
 - ☁️ Deploy on Netlify or Vercel, zero-config
 
 ### Code Quality
