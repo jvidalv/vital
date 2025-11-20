@@ -23,7 +23,7 @@ Mocking up web app with <b>Vital</b><sup><em>(speed)</em></sup><br>
 - 👑 [Atomic Design organization](https://bradfrost.com/blog/post/atomic-web-design/) - Component architecture
 - 🗂 [Path aliases](https://github.com/vitejs/vite/issues/88#issuecomment-762415200) - Clean imports
 - 😃 [Hero Icons](https://heroicons.com/) - Beautiful hand-crafted SVG icons
-- ☁️ Deploy on Netlify, zero-config
+- ☁️ Deploy on Netlify or Vercel, zero-config
 
 ### Code Quality
 
@@ -37,7 +37,7 @@ Mocking up web app with <b>Vital</b><sup><em>(speed)</em></sup><br>
 - [TypeScript](https://www.typescriptlang.org/) - Type safety
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react) - Official React plugin for Vite
 - [PostCSS](https://postcss.org/) - Transform CSS with JavaScript
-- [Netlify](https://www.netlify.com/) - Zero-config deployment
+- [Netlify](https://www.netlify.com/) / [Vercel](https://vercel.com/) - Zero-config deployment
 
 ## Try it now!
 
@@ -88,9 +88,24 @@ yarn build
 
 And you will see the generated file in `dist` that ready to be served.
 
+## Deployment
+
 ### Deploy on Netlify
 
 Go to [Netlify](https://app.netlify.com/start) and select your repository, `OK` along the way, and your App will be live in a minute.
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/jvidalv/vital)
+
+### Deploy on Vercel
+
+Go to [Vercel](https://vercel.com/new) and select your repository, Vercel will detect Vite automatically and configure the build settings for you. Your App will be live in a minute.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/jvidalv/vital)
+
+**Note:** Both platforms automatically detect Vite projects and configure:
+- **Build Command**: `yarn build`
+- **Output Directory**: `dist`
+- **Install Command**: `yarn install`
 
 ## Why
 
