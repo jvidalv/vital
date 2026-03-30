@@ -9,7 +9,7 @@ Mocking up web app with <b>Vital</b><sup><em>(speed)</em></sup><br>
 <br>
 
 <p align='center'>
-<a href="https://nextal-9amf.vercel.app">Live Demo</a>
+<a href="https://vital.josepvidal.dev">Live Demo</a>
 </p>
 
 <br>
