@@ -1,0 +1,42 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  // Ported from the old ESLint config (@eslint/js + typescript-eslint recommended,
+  // react-hooks, react-refresh) with @oxlint/migrate: the plugins' correctness rules
+  // are errors, and `rules` only adds what it enabled outside that category.
+  // Paths come from .gitignore.
+  "plugins": ["typescript", "unicorn", "oxc", "react"],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "categories": {
+    "correctness": "error"
+  },
+  "options": {
+    "denyWarnings": true,
+    "reportUnusedDisableDirectives": "error"
+  },
+  "rules": {
+    "no-array-constructor": "error",
+    "no-case-declarations": "error",
+    "no-empty": "error",
+    "no-fallthrough": "error",
+    "no-prototype-builtins": "error",
+    "no-regex-spaces": "error",
+    "no-unexpected-multiline": "error",
+    "no-var": "error",
+    "prefer-const": "error",
+    "prefer-rest-params": "error",
+    "prefer-spread": "error",
+    "typescript/ban-ts-comment": "error",
+    "typescript/no-empty-object-type": "error",
+    "typescript/no-explicit-any": "error",
+    "typescript/no-namespace": "error",
+    "typescript/no-require-imports": "error",
+    "typescript/no-unnecessary-type-constraint": "error",
+    "typescript/no-unsafe-function-type": "error",
+    "react/rules-of-hooks": "error",
+    "react/unsupported-syntax": "error",
+    "react/only-export-components": ["error", { "allowConstantExport": true }]
+  }
+}

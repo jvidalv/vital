@@ -15,7 +15,7 @@ import CopyButton from "components/molecules/copy-button";
 
 const features = [
   {
-    name: "Vite 7",
+    name: "Vite 8",
     description:
       "Next-generation frontend tooling with lightning-fast HMR and optimized builds.",
     logo: CubeTransparentIcon,
@@ -28,34 +28,34 @@ const features = [
     docs: "https://react.dev/",
   },
   {
-    name: "TypeScript 5.9",
-    description:
-      "Strict type checking for robust and maintainable code.",
+    name: "TypeScript 7",
+    description: "Strict type checking for robust and maintainable code.",
     logo: BookmarkIcon,
     docs: "https://www.typescriptlang.org/",
   },
   {
     name: "Tailwind CSS v4",
-    description: "CSS-first utility framework with new directives and improved DX.",
+    description:
+      "CSS-first utility framework with new directives and improved DX.",
     logo: PhotoIcon,
     docs: "https://tailwindcss.com/",
   },
   {
-    name: "ESLint 9",
-    description: "Flat config format for modern JavaScript and TypeScript linting.",
+    name: "Oxlint",
+    description: "Fast Rust-based linter for JavaScript and TypeScript.",
     logo: BeakerIcon,
-    docs: "https://eslint.org/",
+    docs: "https://oxc.rs/docs/guide/usage/linter.html",
   },
   {
-    name: "Prettier 3",
-    description: "Opinionated code formatter for consistent code style.",
+    name: "Oxfmt",
+    description:
+      "Prettier-compatible code formatter for consistent code style.",
     logo: Bars3Icon,
-    docs: "https://prettier.io/",
+    docs: "https://oxc.rs/docs/guide/usage/formatter.html",
   },
   {
     name: "Atomic Design",
-    description:
-      "Structured component architecture from atoms to organisms.",
+    description: "Structured component architecture from atoms to organisms.",
     logo: PhoneXMarkIcon,
     docs: "https://bradfrost.com/blog/post/atomic-web-design/",
   },
@@ -80,10 +80,13 @@ function App() {
         </h1>
         <p className="max-w-screen-lg text-lg sm:text-xl  text-gray-300 font-medium mb-10 sm:mb-11">
           Bootstrap your web projects faster than ever. Comes with:{" "}
-          <code className="font-mono text-blue-500 font-bold">Tailwind CSS v4</code>
-          , <code className="font-mono text-blue-500 font-bold">Commitlint</code>
-          , <code className="font-mono text-blue-500 font-bold">ESLint</code>,{" "}
-          <code className="font-mono text-blue-500 font-bold">Prettier</code>,{" "}
+          <code className="font-mono text-blue-500 font-bold">
+            Tailwind CSS v4
+          </code>
+          ,{" "}
+          <code className="font-mono text-blue-500 font-bold">Commitlint</code>,{" "}
+          <code className="font-mono text-blue-500 font-bold">Oxlint</code>,{" "}
+          <code className="font-mono text-blue-500 font-bold">Oxfmt</code>,{" "}
           <code className="font-mono text-blue-500 font-bold">lint-staged</code>{" "}
           and{" "}
           <code className="font-mono text-blue-500 font-bold">

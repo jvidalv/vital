@@ -6,10 +6,13 @@ This guide helps AI assistants debug issues in the Vital project efficiently.
 
 ```bash
 # Type check
-yarn tsc --noEmit
+yarn tsc -b
 
 # Lint check
 yarn lint
+
+# Format check
+yarn format:check
 
 # Build check
 yarn build
@@ -27,7 +30,9 @@ rm -rf node_modules/.vite dist && yarn dev
 **Cause**: Path alias not recognized by TypeScript
 
 **Solution**:
+
 1. Check `tsconfig.app.json` has correct paths:
+
    ```json
    {
      "compilerOptions": {
@@ -40,24 +45,34 @@ rm -rf node_modules/.vite dist && yarn dev
    }
    ```
 
-2. Check `vite.config.ts` has matching aliases:
+2. Check `vite.config.ts` still reads those paths:
+
    ```typescript
    resolve: {
-     alias: {
-       app: resolve(__dirname, "src", "app"),
-       components: resolve(__dirname, "src", "components"),
-       hooks: resolve(__dirname, "src", "hooks"),
-     },
+     tsconfigPaths: true,
    }
    ```
 
 3. Restart TypeScript server in your editor
+
+#### Error: "TS5090: Non-relative paths are not allowed" / "TS5102: Option 'baseUrl' has been removed"
+
+**Cause**: TypeScript 7 removed `baseUrl`, so `paths` entries are resolved relative to the tsconfig and must start with `./`
+
+**Solution**: Remove `baseUrl` and write paths as `"components/*": ["./src/components/*"]`
+
+#### Error: "Cannot find namespace 'JSX'"
+
+**Cause**: React 19 types no longer declare a global `JSX` namespace
+
+**Solution**: Let TypeScript infer the component's return type, or import the type from React: `import type { JSX } from "react";`
 
 #### Error: "Property 'X' does not exist on type 'IntrinsicAttributes'"
 
 **Cause**: Incorrect prop typing or missing type definition
 
 **Solution**:
+
 ```typescript
 // Bad ❌
 interface Props {
@@ -79,6 +94,7 @@ const Component = forwardRef<HTMLDivElement, Props>(
 **Cause**: Type mismatch
 
 **Solution**:
+
 1. Check the expected type in the error message
 2. Ensure your value matches that type
 3. Use type assertion if you're certain: `value as Type`
@@ -89,6 +105,7 @@ const Component = forwardRef<HTMLDivElement, Props>(
 **Cause**: Unused variable (strict mode enabled)
 
 **Solution**:
+
 1. Remove the unused variable
 2. Or prefix with underscore if intentional: `_unusedVar`
 3. Or use the variable
@@ -101,13 +118,14 @@ const Component = forwardRef<HTMLDivElement, Props>(
 
 **Solution**: Rename `.ts` file to `.tsx` for files with JSX
 
-### 2. ESLint Errors
+### 2. Lint Errors (Oxlint)
 
 #### Error: "React Hook useEffect has a missing dependency"
 
 **Cause**: Missing dependency in useEffect/useCallback/useMemo
 
 **Solution**:
+
 ```typescript
 // Bad ❌
 const [count, setCount] = useState(0);
@@ -123,7 +141,7 @@ useEffect(() => {
 // Or if you really don't need it
 useEffect(() => {
   console.log(count);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // oxlint-disable-next-line react-hooks/exhaustive-deps
 }, []);
 ```
 
@@ -132,6 +150,7 @@ useEffect(() => {
 **Cause**: Exporting both components and other values from same file
 
 **Solution**:
+
 ```typescript
 // Bad ❌
 export const Button = () => <button />;
@@ -151,12 +170,13 @@ export const BUTTON_TYPES = ["primary", "secondary"];
 **Cause**: Optional chaining in potentially unsafe context
 
 **Solution**:
+
 ```typescript
 // Bad ❌
-const value = obj?.prop + 5; // Could be undefined + 5
+(obj?.method)(); // Throws a TypeError if obj is undefined
 
 // Good ✅
-const value = (obj?.prop ?? 0) + 5;
+obj?.method?.();
 ```
 
 ### 3. Vite/Build Errors
@@ -166,7 +186,9 @@ const value = (obj?.prop ?? 0) + 5;
 **Cause**: Import doesn't match export
 
 **Solution**:
+
 1. Check if export is default or named:
+
    ```typescript
    // If file has: export default Button
    import Button from "components/atoms/button"; // ✅
@@ -187,6 +209,7 @@ const value = (obj?.prop ?? 0) + 5;
 **Cause**: Missing dependency or wrong path
 
 **Solution**:
+
 1. Install missing dependency: `yarn add package-name`
 2. Check import path is correct
 3. Clear Vite cache: `rm -rf node_modules/.vite`
@@ -197,6 +220,7 @@ const value = (obj?.prop ?? 0) + 5;
 **Cause**: Vite detected dependency changes
 
 **Solution**: This is normal, just wait for the reload. If it loops:
+
 ```bash
 rm -rf node_modules/.vite
 yarn dev
@@ -211,6 +235,7 @@ yarn dev
 1. **Classes not in content paths**
 
    Check `src/index.css` (Tailwind v4 uses CSS-first config):
+
    ```css
    @import "tailwindcss" source(".");
    ```
@@ -232,9 +257,10 @@ yarn dev
 3. **CSS import order wrong**
 
    In `src/index.css`:
+
    ```css
-   @import "tailwindcss";
-   @import "@tailwindcss/forms";
+   @import "tailwindcss" source(".");
+   @plugin "@tailwindcss/forms";
 
    /* Your custom CSS after */
    ```
@@ -242,6 +268,7 @@ yarn dev
 4. **Tailwind v4 syntax issues**
 
    Remember this is v4, not v3:
+
    ```css
    /* Bad ❌ (v3 syntax) */
    @tailwind base;
@@ -257,6 +284,7 @@ yarn dev
 **Cause**: Incorrect layer or syntax
 
 **Solution**:
+
 ```css
 @layer components {
   .btn {
@@ -277,6 +305,7 @@ yarn dev
 **Cause**: Using old React 18 API
 
 **Solution**: This project uses React 19's new API:
+
 ```typescript
 // Old ❌
 ReactDOM.render(<App />, document.getElementById('root'));
@@ -291,6 +320,7 @@ createRoot(document.getElementById('root')!).render(<App />);
 **Causes & Solutions**:
 
 1. **Calling hook outside component**
+
    ```typescript
    // Bad ❌
    const value = useState(0);
@@ -303,6 +333,7 @@ createRoot(document.getElementById('root')!).render(<App />);
    ```
 
 2. **Calling hook conditionally**
+
    ```typescript
    // Bad ❌
    if (condition) {
@@ -334,18 +365,21 @@ createRoot(document.getElementById('root')!).render(<App />);
 **Debugging steps**:
 
 1. **Check file exists**
+
    ```bash
    ls -la src/components/atoms/button/
    # Should show: button.tsx, index.ts
    ```
 
 2. **Check index.ts exports**
+
    ```typescript
    // index.ts should have:
    export { default } from "./button";
    ```
 
 3. **Check component file exports**
+
    ```typescript
    // button.tsx should have:
    const Button = () => { ... };
@@ -368,6 +402,7 @@ createRoot(document.getElementById('root')!).render(<App />);
 **Solutions**:
 
 1. **Clear Vite cache**
+
    ```bash
    rm -rf node_modules/.vite
    ```
@@ -386,6 +421,7 @@ createRoot(document.getElementById('root')!).render(<App />);
 **Debug**:
 
 1. **Analyze bundle**
+
    ```bash
    yarn build
    npx vite-bundle-visualizer
@@ -407,6 +443,7 @@ createRoot(document.getElementById('root')!).render(<App />);
 **Causes & Solutions**:
 
 1. **Missing null check**
+
    ```typescript
    // Bad ❌
    const name = user.name;
@@ -431,6 +468,7 @@ createRoot(document.getElementById('root')!).render(<App />);
 **Cause**: Setting state during render
 
 **Solution**:
+
 ```typescript
 // Bad ❌
 function Component() {
@@ -456,6 +494,7 @@ function Component() {
 **Cause**: Infinite render loop
 
 **Solution**:
+
 ```typescript
 // Bad ❌
 function Component() {
@@ -488,29 +527,32 @@ function Component() {
 
 ```bash
 # 1. Run type check with verbose output
-yarn tsc --noEmit --pretty
+yarn tsc -b --pretty
 
-# 2. Check specific file
-yarn tsc --noEmit src/path/to/file.tsx
+# 2. Check only the app (or node) project
+yarn tsc -p tsconfig.app.json
 
 # 3. Get trace for complex errors
-yarn tsc --noEmit --extendedDiagnostics
+yarn tsc -p tsconfig.app.json --extendedDiagnostics
 ```
 
-### ESLint Issues
+### Lint Issues (Oxlint)
 
 ```bash
 # 1. Run lint with detailed output
-yarn lint --format verbose
+yarn lint --format stylish
 
 # 2. Check specific file
-npx eslint src/path/to/file.tsx
+npx oxlint src/path/to/file.tsx
 
 # 3. Auto-fix issues
-yarn lint --fix
+yarn lint:fix
 
 # 4. Check what files are being linted
-npx eslint --debug src/**/*.tsx
+npx oxlint --debug=files
+
+# 5. Show the resolved rules
+npx oxlint --print-config
 ```
 
 ### Build Issues
@@ -540,6 +582,7 @@ npx vite-bundle-visualizer
    - Check component hierarchy
 
 3. **Add console.log debugging**
+
    ```typescript
    function Component() {
      console.log("Component rendering");
@@ -570,42 +613,45 @@ npx vite-bundle-visualizer
 **Error**: "Port 3000 is already in use"
 
 **Solution**:
+
 ```bash
 # Find and kill process on port 3000
 lsof -ti:3000 | xargs kill -9
 
 # Or use a different port
-PORT=3001 yarn dev
+yarn dev --port 3001
 ```
 
 ### Node Version Issues
 
-**Error**: Various errors due to wrong Node version
+**Error**: `The engine "node" is incompatible with this module. Expected version ">=22.22.1"`, or various errors due to wrong Node version
 
 **Solution**:
+
 ```bash
 # Check current version
 node --version
 
-# Should be >= 18
-# If not, install/switch to Node 18+
+# Should be >= 22.22.1
+# If not, install/switch to Node 24 LTS
 
 # Using nvm:
-nvm install 18
-nvm use 18
+nvm install 24
+nvm use 24
 ```
 
 ### Yarn Issues
 
-**Error**: "The engine 'yarn' is incompatible"
+**Error**: `yarn: command not found`, or a newer Yarn rewriting `yarn.lock`
 
-**Solution**:
+**Solution**: This project uses Yarn 1 (classic)
+
 ```bash
 # Check version
 yarn --version
 
-# Should be >= 1.22.5
-# Upgrade if needed:
+# Should be 1.x
+# Install if needed:
 npm install -g yarn
 ```
 
@@ -615,10 +661,11 @@ npm install -g yarn
 
 ```bash
 # 1. Type check
-yarn tsc --noEmit
+yarn tsc -b
 
-# 2. Lint
+# 2. Lint and format
 yarn lint
+yarn format
 
 # 3. Build
 yarn build
@@ -631,7 +678,8 @@ yarn dev
 ### Code Review Checklist
 
 - [ ] No TypeScript errors
-- [ ] No ESLint warnings
+- [ ] No Oxlint findings (`yarn lint`)
+- [ ] Formatted (`yarn format:check`)
 - [ ] Builds successfully
 - [ ] Works in browser
 - [ ] No console errors
@@ -657,7 +705,7 @@ yarn tsc --version
 node --version
 
 # Clear all caches
-rm -rf node_modules/.vite dist .eslintcache
+rm -rf node_modules/.vite node_modules/.tmp dist
 yarn install
 ```
 
@@ -676,22 +724,22 @@ When reporting an issue, include:
 
 ## Common Solutions Summary
 
-| Problem | Quick Fix |
-|---------|-----------|
-| TypeScript errors | `yarn tsc --noEmit` |
-| Linting errors | `yarn lint --fix` |
-| Build fails | `rm -rf node_modules/.vite dist && yarn build` |
-| HMR slow | `rm -rf node_modules/.vite` |
-| Import errors | Check path aliases in `tsconfig.app.json` and `vite.config.ts` |
+| Problem              | Quick Fix                                                                   |
+| -------------------- | --------------------------------------------------------------------------- |
+| TypeScript errors    | `yarn tsc -b`                                                               |
+| Linting errors       | `yarn lint:fix`                                                             |
+| Build fails          | `rm -rf node_modules/.vite dist && yarn build`                              |
+| HMR slow             | `rm -rf node_modules/.vite`                                                 |
+| Import errors        | Check `paths` in `tsconfig.app.json` (Vite reads them via `tsconfigPaths`)  |
 | Tailwind not working | Check `src/index.css` source directive: `@import "tailwindcss" source(".")` |
-| Port in use | `lsof -ti:3000 \| xargs kill -9` |
-| Dependencies weird | `rm -rf node_modules yarn.lock && yarn install` |
+| Port in use          | `lsof -ti:3000 \| xargs kill -9`                                            |
+| Dependencies weird   | `rm -rf node_modules yarn.lock && yarn install`                             |
 
 ## Advanced Debugging
 
 ### Enable Source Maps
 
-Already enabled in `vite.config.ts`. Check browser DevTools sources tab to see original TypeScript files.
+The dev server (`yarn dev`) serves source maps by default. Check browser DevTools sources tab to see original TypeScript files. For production builds, set `build.sourcemap: true` in `vite.config.ts`.
 
 ### Performance Profiling
 
@@ -723,6 +771,7 @@ function onRender(
 ### Memory Leaks
 
 Use Chrome DevTools Memory tab:
+
 1. Take heap snapshot
 2. Perform action
 3. Take another snapshot
@@ -731,13 +780,15 @@ Use Chrome DevTools Memory tab:
 ## Summary
 
 **Most common issues:**
-1. Path alias not working → Check `tsconfig.app.json` and `vite.config.ts`
-2. TypeScript error → Run `yarn tsc --noEmit` for details
-3. ESLint error → Run `yarn lint` for details
+
+1. Path alias not working → Check `paths` in `tsconfig.app.json`
+2. TypeScript error → Run `yarn tsc -b` for details
+3. Lint error → Run `yarn lint` for details
 4. Build error → Clear cache: `rm -rf node_modules/.vite dist`
 5. Tailwind not working → Check v4 syntax in `index.css`
 
 **First steps when debugging:**
+
 1. Read the error message completely
 2. Check the file and line number
 3. Run diagnostic commands
@@ -745,6 +796,7 @@ Use Chrome DevTools Memory tab:
 5. Restart dev server
 
 **When stuck:**
+
 - Check this guide
 - Check CLAUDE.md for project setup
 - Check AGENTS.md for patterns

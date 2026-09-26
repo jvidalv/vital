@@ -1,0 +1,6 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  // Migrated from Prettier (no config, so Prettier 3 defaults) with `oxfmt --migrate=prettier`
+  "printWidth": 80,
+  "sortPackageJson": false
+}

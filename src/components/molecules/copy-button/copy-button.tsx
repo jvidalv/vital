@@ -4,8 +4,10 @@ import {
   DocumentDuplicateIcon,
 } from "@heroicons/react/24/outline";
 
-interface Props
-  extends Omit<ComponentProps<"div">, "className" | "onClick" | "title"> {
+interface Props extends Omit<
+  ComponentProps<"div">,
+  "className" | "onClick" | "title"
+> {
   text: string;
 }
 
@@ -18,7 +20,7 @@ const CopyButton = forwardRef<HTMLDivElement, Props>(
 
     const Icon = useMemo(
       () => (copied ? CheckCircleIcon : DocumentDuplicateIcon),
-      [copied]
+      [copied],
     );
     const title = copied ? "Copied" : "Click to copy to clipboard";
 
@@ -43,7 +45,7 @@ const CopyButton = forwardRef<HTMLDivElement, Props>(
         </div>
       </div>
     );
-  }
+  },
 );
 
 export default CopyButton;

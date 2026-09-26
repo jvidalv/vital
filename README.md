@@ -16,9 +16,9 @@ Mocking up web app with <b>Vital</b><sup><em>(speed)</em></sup><br>
 
 ## Features
 
-- ⚡️ [Vite 7](https://vitejs.dev/) - Next generation frontend tooling
+- ⚡️ [Vite 8](https://vite.dev/) - Next generation frontend tooling
 - ⚛️ [React 19](https://react.dev/) - Latest version with improved performance
-- 🦾 [TypeScript 5.9](https://www.typescriptlang.org/) - Strongly typed JavaScript
+- 🦾 [TypeScript 7](https://www.typescriptlang.org/) - Strongly typed JavaScript, with the native compiler
 - 🎨 [Tailwind CSS v4](https://tailwindcss.com/) - Latest utility-first CSS framework with CSS-based config
 - 👑 [Atomic Design organization](https://bradfrost.com/blog/post/atomic-web-design/) - Component architecture
 - 🗂 [Path aliases](https://github.com/vitejs/vite/issues/88#issuecomment-762415200) - Clean imports
@@ -28,10 +28,10 @@ Mocking up web app with <b>Vital</b><sup><em>(speed)</em></sup><br>
 
 ### Code Quality
 
-- [ESLint 9](https://eslint.org/) - Find and fix problems in JavaScript/TypeScript
-- [Prettier 3](https://prettier.io/) - Opinionated code formatter
+- [Oxlint](https://oxc.rs/docs/guide/usage/linter.html) - Fast linter for JavaScript/TypeScript, with React rules
+- [Oxfmt](https://oxc.rs/docs/guide/usage/formatter.html) - Prettier-compatible code formatter
 - [Commitlint](https://commitlint.js.org/) - Lint commit messages
-- [lint-staged](https://github.com/okonet/lint-staged) - Run linters on git staged files
+- [lint-staged](https://github.com/lint-staged/lint-staged) - Run linters on git staged files (config included, no git hook installed)
 
 ### Dev Tools
 
@@ -41,6 +41,8 @@ Mocking up web app with <b>Vital</b><sup><em>(speed)</em></sup><br>
 - [Netlify](https://www.netlify.com/) / [Vercel](https://vercel.com/) - Zero-config deployment
 
 ## Try it now!
+
+Requires Node.js 22.22.1 or newer and Yarn 1.
 
 ### GitHub Template
 
@@ -73,7 +75,7 @@ And, enjoy :)
 
 ### Development
 
-Just run and visit http://127.0.0.1:3000/
+Just run and visit http://localhost:3000/
 
 ```bash
 yarn dev
@@ -88,6 +90,15 @@ yarn build
 ```
 
 And you will see the generated file in `dist` that ready to be served.
+
+### Lint & Format
+
+```bash
+yarn lint          # Oxlint, fails on any finding
+yarn lint:fix      # Oxlint with auto-fix
+yarn format        # Format everything with Oxfmt
+yarn format:check  # Check formatting without writing
+```
 
 ## Deployment
 
@@ -104,6 +115,7 @@ Go to [Vercel](https://vercel.com/new) and select your repository, Vercel will d
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/jvidalv/vital)
 
 **Note:** Both platforms automatically detect Vite projects and configure:
+
 - **Build Command**: `yarn build`
 - **Output Directory**: `dist`
 - **Install Command**: `yarn install`

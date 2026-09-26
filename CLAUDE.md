@@ -8,27 +8,33 @@ This document helps AI assistants like Claude understand and work effectively wi
 
 ## Tech Stack
 
+Exact versions live in `package.json`; majors below.
+
 ### Core Framework
-- **Vite 7.2.4** - Next-generation frontend build tool
-- **React 19.2.0** - Latest React with improved performance
-- **TypeScript 5.9.3** - Strict type checking enabled
-- **Node.js**: >=18 required
-- **Package Manager**: Yarn >=1.22.5
+
+- **Vite 8** - Next-generation frontend build tool
+- **@vitejs/plugin-react 6** - Official React plugin for Vite
+- **React 19** - Latest React with improved performance
+- **TypeScript 7** - Native compiler, strict type checking enabled
+- **Node.js**: 22.22.1 or newer (see `engines`)
+- **Package Manager**: Yarn 1 (classic, `yarn.lock`)
 
 ### Styling
-- **Tailwind CSS v4.1.17** - Latest version with CSS-based configuration
-- **@tailwindcss/forms 0.5.10** - Form styling plugin
-- **PostCSS 8.5.6** with Autoprefixer 10.4.22
+
+- **Tailwind CSS 4** - Latest version with CSS-based configuration (vendor prefixes included, no Autoprefixer needed)
+- **@tailwindcss/forms** - Form styling plugin
+- **PostCSS 8**
 
 ### Code Quality
-- **ESLint 9.39.1** - Flat config format (ESLint 9+)
-- **typescript-eslint 8.47.0** - TypeScript linting
-- **Prettier 3.6.2** - Code formatting
-- **lint-staged 16.2.7** - Pre-commit linting
-- **Commitlint 20.0.0** - Conventional commits enforcement
+
+- **Oxlint** - Linting (TypeScript, React and React Hooks rules)
+- **Oxfmt** - Code formatting (Prettier-compatible)
+- **lint-staged** - Lint and format staged files
+- **Commitlint** - Conventional commits enforcement
 
 ### Additional Libraries
-- **@heroicons/react 2.2.0** - Beautiful SVG icons
+
+- **@heroicons/react 2** - Beautiful SVG icons
 
 ## Project Structure
 
@@ -50,18 +56,18 @@ vital/
 │   │   │   └── copy-button/
 │   │   ├── organisms/                  # Complex components
 │   │   │   └── card/
-│   │   └── templates/                  # Page layouts (empty)
-│   ├── hooks/                          # Custom React hooks
+│   │   └── templates/                  # Page layouts (not created yet)
+│   ├── hooks/                          # Custom React hooks (not created yet)
 │   ├── index.css                       # Global styles + Tailwind
 │   ├── main.tsx                        # Entry point
 │   └── vite-env.d.ts
+├── .oxfmtrc.json                       # Oxfmt config
+├── .oxlintrc.json                      # Oxlint config
 ├── commitlint.config.js
-├── eslint.config.js                    # ESLint flat config
 ├── index.html                          # HTML entry
 ├── lint-staged.config.js
 ├── postcss.config.js
-├── tailwind.config.js
-├── tsconfig.json                       # Root TS config
+├── tsconfig.json                       # Root TS config (project references)
 ├── tsconfig.app.json                   # App TS config
 ├── tsconfig.node.json                  # Node/Vite TS config
 └── vite.config.ts
@@ -69,9 +75,10 @@ vital/
 
 ## Path Aliases
 
-**IMPORTANT**: This project uses path aliases configured in both `vite.config.ts` and `tsconfig.app.json`.
+**IMPORTANT**: This project uses path aliases defined once, in `paths` of `tsconfig.app.json`. Vite reads them through `resolve.tsconfigPaths: true` in `vite.config.ts`.
 
 ### Available Aliases
+
 ```typescript
 // Instead of: import Button from '../../components/atoms/button'
 // Use:
@@ -81,6 +88,7 @@ import { useCustomHook } from "hooks/useCustomHook";
 ```
 
 **Configured paths:**
+
 - `app/*` → `src/app/*`
 - `components/*` → `src/components/*`
 - `hooks/*` → `src/hooks/*`
@@ -88,15 +96,21 @@ import { useCustomHook } from "hooks/useCustomHook";
 ## Available Scripts
 
 ```bash
-yarn dev      # Start dev server on http://localhost:3000
-yarn build    # TypeScript check + Vite build → dist/
-yarn lint     # Run ESLint with auto-fix
-yarn preview  # Preview production build locally
+yarn dev           # Start dev server on http://localhost:3000
+yarn build         # TypeScript check (tsc -b) + Vite build → dist/
+yarn lint          # Run Oxlint, fails on any finding (warnings too)
+yarn lint:fix      # Run Oxlint with auto-fix
+yarn format        # Format the whole repo with Oxfmt
+yarn format:check  # Check formatting without writing
+yarn preview       # Preview production build locally
 ```
+
+Type check only: `yarn tsc -b`.
 
 ## TypeScript Configuration
 
 ### Key Settings (tsconfig.app.json)
+
 - **Target**: ES2020
 - **Module**: ESNext with Bundler resolution
 - **JSX**: react-jsx (new transform, no React import needed)
@@ -108,9 +122,12 @@ yarn preview  # Preview production build locally
   - `noUncheckedSideEffectImports: true`
 
 ### Important
+
 - Unused variables/parameters will cause compilation errors
 - All imports must be properly typed
 - Use `allowImportingTsExtensions: true` (Vite handles this)
+- `tsconfig.json` only holds project references: type check with `tsc -b`. Plain `tsc` or `tsc --noEmit` at the root checks nothing
+- TypeScript 7 removed `baseUrl`, so `paths` entries must start with `./` (resolved relative to the tsconfig)
 
 ## Tailwind CSS v4 Setup
 
@@ -121,6 +138,7 @@ yarn preview  # Preview production build locally
 Tailwind v4 does NOT use `tailwind.config.js`. All configuration is done in CSS using special directives.
 
 ### CSS Configuration (src/index.css)
+
 ```css
 @import "tailwindcss" source(".");
 @plugin "@tailwindcss/forms";
@@ -131,6 +149,7 @@ Tailwind v4 does NOT use `tailwind.config.js`. All configuration is done in CSS 
 ```
 
 **Key directives:**
+
 - `@import "tailwindcss" source(".")` - Imports Tailwind and sets content path (relative to CSS file)
 - `@plugin "@tailwindcss/forms"` - Loads official plugins
 - `@theme { }` - Define custom design tokens (colors, spacing, fonts, etc.)
@@ -138,6 +157,7 @@ Tailwind v4 does NOT use `tailwind.config.js`. All configuration is done in CSS 
 - `@source` - Additional content paths or safelisting
 
 **Key differences from v3:**
+
 - **NO tailwind.config.js** - All configuration in CSS
 - No separate `@tailwind base/components/utilities` directives
 - Use `@import "tailwindcss"` instead
@@ -151,6 +171,7 @@ Tailwind v4 does NOT use `tailwind.config.js`. All configuration is done in CSS 
 This project follows the Atomic Design methodology:
 
 ### Hierarchy
+
 1. **Atoms** - Basic building blocks (Button, Logos)
 2. **Molecules** - Simple component groups (CopyButton)
 3. **Organisms** - Complex components (Card)
@@ -158,6 +179,7 @@ This project follows the Atomic Design methodology:
 5. **Pages** - Specific instances (not yet used)
 
 ### Component Structure Pattern
+
 ```
 component-name/
 ├── component-name.tsx    # Implementation
@@ -165,6 +187,7 @@ component-name/
 ```
 
 ### Where to Place Components
+
 - **Atoms**: Standalone UI elements (buttons, inputs, icons, badges)
 - **Molecules**: 2-3 atoms working together (search box, form field, menu item)
 - **Organisms**: Complex sections (header, card, form, navigation)
@@ -172,6 +195,7 @@ component-name/
 ## Code Style & Patterns
 
 ### Component Pattern (Atoms)
+
 ```typescript
 import { forwardRef, ComponentProps } from "react";
 
@@ -196,6 +220,7 @@ export default Button;
 ```
 
 ### Component Pattern (with custom props)
+
 ```typescript
 import { forwardRef, ComponentProps } from "react";
 
@@ -223,36 +248,45 @@ export default Card;
 ```
 
 ### Import Order
+
 1. React imports
 2. Third-party libraries (@heroicons, etc.)
 3. Local components (using path aliases)
 4. Types/interfaces (if separate file)
 
 ### Styling Conventions
+
 - All Tailwind classes inline (no separate CSS modules)
 - Responsive design: `sm:`, `md:`, `lg:`, `xl:` breakpoints
 - Always include focus states for accessibility
 - Color scheme: Purple/Blue/Gray dark theme
 - Use Tailwind's utility classes, avoid custom CSS when possible
 
-## ESLint Configuration
+## Oxlint Configuration
 
-**Format**: ESLint 9 Flat Config (different from older `.eslintrc` format)
+**Config**: `.oxlintrc.json` (JSONC, comments allowed). Rules were ported from the previous ESLint setup (`@eslint/js` + `typescript-eslint` recommended, `eslint-plugin-react-hooks`, `eslint-plugin-react-refresh`) with `@oxlint/migrate`.
 
 ### Key Features
-- Flat config array export
-- TypeScript support via typescript-eslint
-- React Hooks rules enforced
-- React Refresh validation
+
+- The `correctness` category of every plugin in `.oxlintrc.json` is an error, plus the ported rules in `rules`
+- `options` fails on warnings and stale `oxlint-disable` comments (CLI, lint-staged and editors alike)
+- Ignored paths come from `.gitignore`
 
 ### Common Rules
-- `react-refresh/only-export-components`: Warns if non-components are exported from component files
-- TypeScript strict rules enabled
-- React Hooks rules enforced (exhaustive deps, rules of hooks)
+
+- `react/only-export-components`: Errors if non-components are exported from component files (React Fast Refresh; constant exports are allowed)
+- `react/rules-of-hooks` and `react/exhaustive-deps`: React Hooks rules (reported as `react-hooks(...)`)
+- `typescript/no-explicit-any`, `typescript/ban-ts-comment` and the rest of typescript-eslint's recommended rules
+- Disable a rule for one line with `// oxlint-disable-next-line <rule>` (`eslint-disable` comments also work)
+
+## Oxfmt Configuration
+
+**Config**: `.oxfmtrc.json`. Migrated from Prettier's defaults with `oxfmt --migrate=prettier` (`printWidth: 80`, `package.json` key sorting off), so output closely matches Prettier. It formats JS/TS, JSON, CSS, HTML and Markdown across the whole repo (`.gitignore`d paths are skipped).
 
 ## Git & Commit Conventions
 
 ### Commitlint (Conventional Commits)
+
 ```
 <type>(<scope>): <description>
 
@@ -262,6 +296,7 @@ export default Card;
 ```
 
 **Types:**
+
 - `feat`: New feature
 - `fix`: Bug fix
 - `docs`: Documentation changes
@@ -271,6 +306,7 @@ export default Card;
 - `chore`: Maintenance tasks
 
 ### Examples
+
 ```
 feat: add user authentication
 fix: resolve navbar overflow on mobile
@@ -278,28 +314,36 @@ docs: update README with deployment instructions
 refactor: simplify button component logic
 ```
 
-### Pre-commit Hooks (lint-staged)
-Automatically runs on staged files:
-1. Prettier formatting (`*.{ts,tsx,css}`)
-2. ESLint auto-fix (`*.{ts,tsx}`)
-3. TypeScript type checking (`yarn tsc`)
+### Staged Files (lint-staged)
+
+`lint-staged.config.js` runs these in order on all staged files (each tool skips file types it doesn't handle):
+
+1. Oxlint auto-fix
+2. Oxfmt
+3. TypeScript type checking (`tsc -b`)
+
+**Note**: No git hook is installed (there's no Husky or similar), so neither lint-staged nor Commitlint runs automatically. Run `npx lint-staged` by hand, or wire both into `pre-commit` / `commit-msg` hooks with a tool like Husky.
 
 ## Build & Deployment
 
 ### Build Process
+
 ```bash
 yarn build
-# 1. Runs TypeScript compiler (type checking)
+# 1. Runs TypeScript compiler in build mode (tsc -b, type checking only)
 # 2. Runs Vite build
 # 3. Outputs to dist/ directory
 ```
 
 ### Deployment Platforms
+
 **Zero-config support:**
+
 - **Netlify** - Auto-detects Vite configuration
 - **Vercel** - Auto-detects Vite configuration
 
 **Auto-configured:**
+
 - Build Command: `yarn build`
 - Output Directory: `dist`
 - Install Command: `yarn install`
@@ -307,6 +351,7 @@ yarn build
 ## Important Gotchas
 
 ### 1. Tailwind v4 is New
+
 - Most online tutorials cover Tailwind v3
 - **NO tailwind.config.js** - All configuration in CSS
 - Configuration is 100% CSS-based using directives
@@ -316,33 +361,39 @@ yarn build
 - Requires `@tailwindcss/postcss` package for PostCSS
 - Theme customization via `@theme` directive with CSS variables
 
-### 2. ESLint 9 Flat Config
-- Uses new flat config format (not `.eslintrc`)
-- Export default array, not object
-- Different plugin API
+### 2. Oxlint + Oxfmt, not ESLint + Prettier
+
+- There is no ESLint or Prettier config: lint rules live in `.oxlintrc.json`, formatting in `.oxfmtrc.json`
+- Rule names use Oxlint's plugin prefixes: `typescript/` instead of `@typescript-eslint/`, and `react/` for the React Hooks / React Refresh rules
+- Only Oxlint's native rules are configured (no ESLint JS plugins)
 
 ### 3. React 19
+
 - Latest React version (cutting edge)
 - New JSX transform (no React import needed)
 - Some third-party libraries may not be compatible yet
 
 ### 4. TypeScript Strictness
+
 - Very strict configuration
 - Unused variables will error (not warn)
 - All imports must be typed
 
 ### 5. Module System
+
 - Type: "module" in package.json
 - All config files use ESM syntax (export default)
 - No CommonJS (no require())
 
 ### 6. Dev Server Port
+
 - Runs on `http://localhost:3000` (not default Vite 5173)
 - Configured in `vite.config.ts`
 
 ## Common Tasks
 
 ### Adding a New Component
+
 1. Determine level: atom, molecule, or organism
 2. Create directory: `src/components/{level}/{name}/`
 3. Create `{name}.tsx` with component implementation
@@ -350,36 +401,41 @@ yarn build
 5. Use path alias for imports: `import Component from "components/atoms/component"`
 
 ### Adding a Custom Hook
+
 1. Create file: `src/hooks/useHookName.ts`
 2. Export hook function
 3. Import using path alias: `import { useHookName } from "hooks/useHookName"`
 
 ### Adding Global Styles
+
 - Edit `src/index.css`
 - Use Tailwind's `@layer` directive
 - Available layers: `base`, `components`, `utilities`
 
 ### Debugging Build Issues
-1. Check TypeScript: `yarn tsc --noEmit`
-2. Check ESLint: `yarn lint`
+
+1. Check TypeScript: `yarn tsc -b`
+2. Check Oxlint: `yarn lint`
 3. Clear cache: `rm -rf node_modules/.vite`
 4. Reinstall: `rm -rf node_modules && yarn install`
 
 ## File Reference
 
 ### Entry Points
+
 - HTML: `index.html`
 - JS Entry: `src/main.tsx`
 - Main Component: `src/app/app.tsx`
 
 ### Configuration Files
+
 - **Vite**: `vite.config.ts`
 - **TypeScript (app)**: `tsconfig.app.json`
 - **TypeScript (node)**: `tsconfig.node.json`
-- **ESLint**: `eslint.config.js`
+- **Oxlint**: `.oxlintrc.json`
 - **Tailwind**: `src/index.css` (CSS-first config, NO tailwind.config.js)
 - **PostCSS**: `postcss.config.js`
-- **Prettier**: Uses defaults (no config file)
+- **Oxfmt**: `.oxfmtrc.json`
 - **Commitlint**: `commitlint.config.js`
 - **lint-staged**: `lint-staged.config.js`
 
@@ -395,6 +451,7 @@ yarn build
 ## Best Practices
 
 ### When Writing Code
+
 1. Use TypeScript strictly (no `any` types)
 2. Always use path aliases for imports
 3. Follow Atomic Design for component placement
@@ -405,12 +462,14 @@ yarn build
 8. Write semantic HTML
 
 ### When Editing Files
-1. Run `yarn lint` before committing
-2. Ensure TypeScript compiles: `yarn tsc --noEmit`
+
+1. Run `yarn lint` and `yarn format` before committing
+2. Ensure TypeScript compiles: `yarn tsc -b`
 3. Test in browser: `yarn dev`
 4. Follow conventional commit format
 
 ### When Adding Dependencies
+
 1. Use `yarn add` (not npm install)
 2. Add types if needed: `yarn add -D @types/package-name`
 3. Update CLAUDE.md if it's a significant dependency
@@ -418,6 +477,7 @@ yarn build
 ## Questions to Ask User
 
 Before implementing features, consider asking:
+
 - "Should this be an atom, molecule, or organism?"
 - "Do you want TypeScript interfaces in the same file or separate?"
 - "Should this component support refs?"
@@ -427,10 +487,11 @@ Before implementing features, consider asking:
 ## Summary
 
 This is a modern, cutting-edge React template with:
-- Latest versions (React 19, Vite 7, Tailwind v4)
+
+- Latest versions (React 19, Vite 8, TypeScript 7, Tailwind v4)
 - Strict TypeScript configuration
 - Atomic Design architecture
-- Comprehensive code quality tools
+- Comprehensive code quality tools (Oxlint, Oxfmt, Commitlint, lint-staged)
 - Zero-config deployment
 
 Follow the patterns established in existing components, use path aliases, and maintain the Atomic Design structure.

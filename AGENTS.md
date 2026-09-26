@@ -17,29 +17,34 @@ This guide helps AI agents build features and components for the Vital project e
 Ask yourself:
 
 **Is it an Atom?**
+
 - Single, standalone UI element
 - No other components inside (except maybe icons)
 - Highly reusable
 - Examples: Button, Input, Badge, Avatar, Icon
 
 **Is it a Molecule?**
+
 - Combines 2-3 atoms
 - Serves a single, clear purpose
 - Examples: SearchBox (input + button), FormField (label + input + error), MenuItem (icon + text)
 
 **Is it an Organism?**
+
 - Complex, feature-rich component
 - Contains multiple molecules and/or atoms
 - Often domain-specific
 - Examples: Header, Card, Form, Navigation, ProductCard
 
 **Is it a Template?**
+
 - Page layout structure
 - Defines content areas
 - No actual content, just placeholders
 - Examples: DashboardLayout, AuthLayout
 
 **Is it a Page?**
+
 - Specific instance of a template
 - Contains real content
 - Examples: HomePage, LoginPage, UserProfilePage
@@ -47,6 +52,7 @@ Ask yourself:
 ### Step 2: Create Component Files
 
 #### Directory Structure
+
 ```bash
 # Atoms
 src/components/atoms/{component-name}/
@@ -65,6 +71,7 @@ src/components/organisms/{component-name}/
 ```
 
 #### File Naming
+
 - Use **kebab-case** for directories: `copy-button`, `user-card`, `search-input`
 - Use **kebab-case** for files: `copy-button.tsx`, not `CopyButton.tsx`
 - Component name is **PascalCase**: `const CopyButton = ...`
@@ -97,6 +104,7 @@ export default ComponentName;
 ```
 
 **Example: Badge Atom**
+
 ```typescript
 import { forwardRef, ComponentProps } from "react";
 
@@ -150,6 +158,7 @@ export default ComponentName;
 ```
 
 **Example: Card Organism**
+
 ```typescript
 import { forwardRef, ComponentProps } from "react";
 
@@ -211,6 +220,7 @@ export { default } from "./component-name";
 ```
 
 This allows clean imports:
+
 ```typescript
 // Good ✅
 import Button from "components/atoms/button";
@@ -245,6 +255,7 @@ function MyComponent() {
 ### Tailwind CSS v4 Best Practices
 
 #### Use Utility Classes
+
 ```typescript
 // Good ✅
 <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
@@ -258,6 +269,7 @@ function MyComponent() {
 ```
 
 #### Responsive Design
+
 ```typescript
 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
   {/* Responsive grid */}
@@ -265,6 +277,7 @@ function MyComponent() {
 ```
 
 **Breakpoints:**
+
 - `sm:` - 640px and up
 - `md:` - 768px and up
 - `lg:` - 1024px and up
@@ -272,9 +285,10 @@ function MyComponent() {
 - `2xl:` - 1536px and up
 
 #### Color Scheme
+
 The project uses a **dark theme** with purple/blue accents:
 
-```typescript
+```text
 // Primary colors
 bg-gray-900      // Main background
 bg-gray-800      // Card backgrounds
@@ -290,6 +304,7 @@ focus:outline-none
 ```
 
 #### Accessibility
+
 Always include focus states and ARIA attributes:
 
 ```typescript
@@ -304,7 +319,8 @@ Always include focus states and ARIA attributes:
 ### Common Patterns
 
 #### Buttons
-```typescript
+
+```text
 // Primary button
 className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
 
@@ -316,17 +332,20 @@ className="px-4 py-2 border border-blue-500 text-blue-500 rounded hover:bg-blue-
 ```
 
 #### Cards
-```typescript
+
+```text
 className="p-6 bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
 ```
 
 #### Inputs
-```typescript
+
+```text
 className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
 ```
 
 #### Containers
-```typescript
+
+```text
 className="max-w-screen-lg xl:max-w-screen-xl mx-auto px-4"
 ```
 
@@ -335,6 +354,7 @@ className="max-w-screen-lg xl:max-w-screen-xl mx-auto px-4"
 ### Props Typing
 
 #### Extending HTML Props
+
 ```typescript
 // For DOM elements
 interface ButtonProps extends Omit<ComponentProps<"button">, "className"> {
@@ -343,13 +363,17 @@ interface ButtonProps extends Omit<ComponentProps<"button">, "className"> {
 }
 
 // For custom elements
-interface CardProps extends Omit<ComponentProps<"div">, "className" | "onClick"> {
+interface CardProps extends Omit<
+  ComponentProps<"div">,
+  "className" | "onClick"
+> {
   title: string;
   onCardClick?: () => void;
 }
 ```
 
 #### Component Type Props
+
 ```typescript
 interface Props {
   Icon?: React.ComponentType<{ className?: string }>;
@@ -473,8 +497,8 @@ function Form() {
 ### In src/index.css
 
 ```css
-@import "tailwindcss";
-@import "@tailwindcss/forms";
+@import "tailwindcss" source(".");
+@plugin "@tailwindcss/forms";
 
 @layer base {
   html {
@@ -563,13 +587,13 @@ const Component = ({ Icon }: Props) => {
    - [ ] Alt text on images
 
 4. **TypeScript**
-   - [ ] No type errors: `yarn tsc --noEmit`
+   - [ ] No type errors: `yarn tsc -b`
    - [ ] Props properly typed
    - [ ] No `any` types
 
 5. **Code Quality**
-   - [ ] ESLint passes: `yarn lint`
-   - [ ] Prettier formatted
+   - [ ] Oxlint passes: `yarn lint`
+   - [ ] Formatted with Oxfmt: `yarn format`
    - [ ] Follows project conventions
 
 ## Common Mistakes to Avoid
@@ -642,10 +666,11 @@ className="text-blue-500"
 
 ```bash
 # 1. Check TypeScript
-yarn tsc --noEmit
+yarn tsc -b
 
-# 2. Run linter
+# 2. Run linter and formatter
 yarn lint
+yarn format
 
 # 3. Test in browser
 yarn dev
@@ -666,6 +691,7 @@ git commit -m "feat: add user profile card component"
 ```
 
 **Types:**
+
 - `feat`: New feature or component
 - `fix`: Bug fix
 - `refactor`: Code refactoring
@@ -674,6 +700,7 @@ git commit -m "feat: add user profile card component"
 - `chore`: Maintenance
 
 **Examples:**
+
 ```
 feat: add badge atom component
 feat(organisms): add navigation header
